@@ -245,7 +245,7 @@ td { vertical-align: top; }
 
 /* ==|== base =============================================================== */
 
-a:link {}
+a:link { color: #234c19;}
 
 a:hover {}
 
@@ -269,29 +269,30 @@ h6 { font-size: 0.875em; margin: 1.714285em 0; line-height: 1.714285em; }
 
 img { max-width: 100%; }
 
-input { display: block; margin-bottom: 1.5em; }
+input { display: block; margin-bottom: 1.5em; width: 53.125%; height: 1.5em;}
 
-input[type="submit"], input[type="reset"] { display: block; margin: 1.5em 0;}
+input[type="submit"], input[type="reset"] { display: block; margin: 1.5em 0; width: 15.625%}
 
 input[type="radio"] { height: 1em; line-height: 1.5em;}
 
 p { font-size: 1em; margin: 1.5em 0; line-height: 1.5em; }
 
-table { width: 50%; border: 1px solid #c8c8c8;}
+table { width: 100%; border: 1px solid #c8c8c8;}
 
-td { height: 50px; }
+td, th { padding: 5px; }
 
 tr:nth-child(even) { background-color: #efefef; }
 
-thead tr, tfoot { background-color: #fff; }
+thead { text-align: left; }
 
-textarea { display: block; margin-bottom: 1.5em; }
+thead tr { background-color: #efefef; }
+
+textarea { display: block; margin-bottom: 1.5em; width: 100%; min-height: 300px; }
 
 
 
 /* ==|== layout =============================================================== */
 
-#main { max-width: 960px; margin: auto; height: 750px;  }
 
 #header { height: 100px; width: 100%; z-index: 9999px; position: relative; z-index: 9999; }
 
@@ -306,6 +307,9 @@ textarea { display: block; margin-bottom: 1.5em; }
   background: #fff;
 }
 
+#main { width: 68.085%; min-height: 750px;  float: left; }
+
+#sidebar { width: 23.404%; float: right; }
 
 
 
@@ -315,7 +319,9 @@ textarea { display: block; margin-bottom: 1.5em; }
 
 #header .wrapper { background-color: transparent; border: none;  position: relative; }
 
-.logo {
+.logo { margin: 0; padding: 0; }
+
+.logo a {
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
@@ -324,6 +330,7 @@ textarea { display: block; margin-bottom: 1.5em; }
   width: 149px;
   margin: 0;
   padding: 0;
+  display: block;
 }
 
 /* Global Navigation */
@@ -336,7 +343,45 @@ textarea { display: block; margin-bottom: 1.5em; }
 
 #navigation a:hover { text-decoration: underline; }
 
+#footer { clear: both; width: 100%; }
+
 /* ==|== state =============================================================== */
+
+.is-error { 
+  background: url(../img/error.png) no-repeat 10px center #FFCCCC; 
+  border: 1px solid #BF5050; 
+  padding: 20px 1.5em 10px 40px; 
+  margin: 1.5em 0; 
+}
+
+  input.is-error, textarea.is-error, select.is-error { padding: 2px; background-image: none; margin-top: 0; }
+  
+  label.is-error { display: block; background: none; border: 0; margin: -20px 0 10px 0; padding: 0; color: #f00;}
+  
+.is-success { 
+  background: url(../img/success.png) no-repeat 10px center #CCFFCC; 
+  border: 1px solid #7DB573; 
+  padding: 20px 1.5em 10px 40px;
+  margin: 1.5em 0; 
+}
+
+.is-warning { 
+  background: url(../img/warning.png) no-repeat 10px center #fcfadf;
+  border: 1px solid #fff676; 
+  padding: 20px 1.5em 10px 40px; 
+  margin: 1.5em 0; 
+  min-height: 40px;
+}
+
+  /*.is-warning:before { content: "!"; font-size: 2em; height: 100%; display: block; float: left; vertical-align: center; }
+*/
+.is-message { 
+  background: url(../img/message.png) no-repeat 10px center #C6EBFF; 
+  border: 1px solid #5B8AA3; 
+  padding: 20px 1.5em 10px 40px; 
+  margin: 1.5em 0;
+}
+
 
 
 
@@ -358,6 +403,55 @@ textarea { display: block; margin-bottom: 1.5em; }
 
 @media only screen and (min-width: 35em) {
   /* Style adjustments for viewports that meet the condition */
+}
+
+@media only screen and (max-width: 768px) {
+  
+  input[type="submit"], input[type="reset"] { width: 25%; }
+
+}
+
+@media only screen and (max-width:768px) and (min-width:480px) {
+
+  #navigation { font-size: .75em; }
+
+}
+
+@media only screen and (max-width: 480px) {
+
+  #header { height: auto; background-color: #fff; }
+
+  #navigation { 
+    position: static; 
+    background-color: #efefef; 
+    width: 60%; 
+    margin: auto; 
+    border: 1px solid #aaa;
+    text-align: center; 
+  }
+
+  #navigation li { float: none; margin: 0; display: block; }
+
+  #navigation li:after { 
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px; 
+    background: url('../img/divider.png') repeat-x; 
+  }
+
+  #navigation li:last-child:after {
+    background: none;
+  }
+
+  #navigation a { color: #333; height: 100%; width: 100%; display: block; padding: 20px 0; }
+
+  #navigation li:focus, #navigation li:hover { background-color: #ccc; }
+
+  #main, #sidebar { float: none; width: 100%; }
+  
+  input[type="submit"], input[type="reset"] { width: 25%; }
+
 }
 
 
