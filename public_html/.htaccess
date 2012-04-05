@@ -327,6 +327,14 @@ FileETag None
   RewriteEngine On
 </IfModule>
 
+# ----------------------------------------------------------------------
+# Remove index.php from CodeIgniter, but allow other assets
+# ----------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteCond $1 !^(index\.php|img|js|css|404\.html|apple-touch-icon*|crossdomain\.xml|favicon\.ico|humans\.txt|robots\.txt)
+  RewriteRule ^(.*)$ /index.php/$1 [L]
+</IfModule>
+
 
 
 # ----------------------------------------------------------------------
