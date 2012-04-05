@@ -49,11 +49,11 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'matt';
-$db['default']['password'] = '';
-$db['default']['database'] = 'grad_project';
-$db['default']['dbdriver'] = 'mysql';
-$db['default']['dbprefix'] = 'ck_';
+$db['default']['username'] = 'chalk';
+$db['default']['password'] = '4YtA9RCUh0Hamxi5';
+$db['default']['database'] = 'chalk';
+$db['default']['dbdriver'] = 'mysqli';
+$db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = FALSE;
