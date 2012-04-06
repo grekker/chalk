@@ -1,3 +1,0 @@
-This is just a test for committing to Github
-Now I added another line of text since I committed my file under "anonymous"
-hopefully this shows up as 'cdietz' this time. K thnx bye!!
