@@ -30,5 +30,6 @@ echo form_password('password', '', 'id="password"');
 <div class="errors"><?php echo validation_errors(); ?></div>
 
 <?php echo form_close(); ?>
+
 </body>
 </html>

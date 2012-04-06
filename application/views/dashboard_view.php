@@ -8,6 +8,11 @@
 
 
 <p>DASHBOARD</p>
+<?php 
+
+echo $_SESSION['username'];
+
+?>
 
 </body>
 </html>

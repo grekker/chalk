@@ -16,19 +16,12 @@ class Admin extends CI_Controller {
 		
 		
 		if($this->form_validation->run() !== FALSE){
-			//valid login
+			//data meets validation requirements
 			$this->load->model('admin_model');
-			$res = $this
-				->admin_model
-				->verify_user(
-					$this->input->post('email_address'), 
-					$this->input->post('password')
-				);
+			$res = $this->admin_model->verify_user($this->input->post('email_address'), $this->input->post('password'));
 				
 			if ($res !== FALSE){
-				//person is valid
-				$_SESSION['username'] = $this->input->post('email_address');
-				redirect('dashboard');
+				$this->admin_model->login($this->input->post('email_address'));	
 			}	
 		}
 		
