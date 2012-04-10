@@ -345,6 +345,35 @@ textarea { display: block; margin-bottom: 1.5em; width: 100%; min-height: 300px;
 
 #footer { clear: both; width: 100%; }
 
+/* Responsive Table Base */
+
+.table-menu-wrapper {
+   position: absolute;
+   top: -3em;
+   right: 0;
+}
+
+.table-menu {
+   position: absolute;   
+   right: 0;
+   left: auto;
+   background-color: #fff;
+   padding: 10px;
+   border: 1px solid #ccc;
+   font-size: 1.2em;
+   width: 12em;
+}
+
+.table-menu-hidden {
+   left: -999em;
+   right: auto;
+}
+
+.table-wrapper {
+   position: relative;
+   margin: 5em 5%;
+}
+
 /* ==|== state =============================================================== */
 
 .is-error { 
@@ -380,6 +409,15 @@ textarea { display: block; margin-bottom: 1.5em; width: 100%; min-height: 300px;
   border: 1px solid #5B8AA3; 
   padding: 20px 1.5em 10px 40px; 
   margin: 1.5em 0;
+}
+
+.enhanced th,
+.enhanced td {
+   display: none;
+}
+.enhanced th.essential, 
+.enhanced td.essential {
+   display: table-cell;
 }
 
 
@@ -451,6 +489,10 @@ textarea { display: block; margin-bottom: 1.5em; width: 100%; min-height: 300px;
   #main, #sidebar { float: none; width: 100%; }
   
   input[type="submit"], input[type="reset"] { width: 25%; }
+
+  .enhanced th.optional, .enhanced td.optional {
+      display: table-cell;
+   }
 
 }
 

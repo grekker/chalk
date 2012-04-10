@@ -50,45 +50,47 @@
     <div role="main" id="main">
       <p class="is-warning">You have 101248 items to grade.  Oh dear. <a href="#">Get a move on.</a></p>
       <h2>Sample Table</h2>
+      <div class="table-wrapper">
       <table>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Due</th>
-            <th>Completed</th>
-            <th>Late</th>
-            <th>Grading</th>
+            <th class="essential">Name</th>
+            <th class="optional">Due</th>
+            <th class="optional">Completed</th>
+            <th class="optional">Late</th>
+            <th class="essential">Grading</th>
           </tr>
         </thead>
         <tr>
-          <td>Assignment 1</td>
+          <th>Assignment 1</td>
           <td>March 12, 2012</td>
           <td>22/24</td>
           <td>2</td>
           <td><a href="#">View All</a> &#149; <a href="#">Start Grading</a></td>
         </tr>
         <tr>
-          <td>Assignment 2</td>
+          <th>Assignment 2</td>
           <td>March 12, 2012</td>
           <td>22/24</td>
           <td>2</td>
           <td><a href="#">View All</a> &#149; <a href="#">Start Grading</a></td>
         </tr>
         <tr>
-          <td>Assignment 3</td>
+          <th>Assignment 3</td>
           <td>March 12, 2012</td>
           <td>22/24</td>
           <td>2</td>
           <td><a href="#">View All</a> &#149; <a href="#">Start Grading</a></td>
         </tr>
         <tr>
-          <td>Assignment 4</td>
+          <th>Assignment 4</td>
           <td>March 12, 2012</td>
           <td>22/24</td>
           <td>2</td>
           <td><a href="#">View All</a> &#149; <a href="#">Start Grading</a></td>
         </tr>
       </table>
+    </div>
 
       <h2>Sample Form</h2>
       <form>
@@ -131,6 +133,7 @@
   <!-- scripts concatenated and minified via build script -->
   <script src="js/plugins.js"></script>
   <script src="js/script.js"></script>
+  <script src="js/rwd-table.js"></script>
   <!-- end scripts -->
 
   <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
