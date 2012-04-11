@@ -289,6 +289,8 @@ thead tr { background-color: #efefef; }
 
 textarea { display: block; margin-bottom: 1.5em; width: 100%; min-height: 300px; }
 
+tbody th { font-weight: normal; text-align: left; }
+
 
 
 /* ==|== layout =============================================================== */
@@ -358,11 +360,17 @@ textarea { display: block; margin-bottom: 1.5em; width: 100%; min-height: 300px;
    right: 0;
    left: auto;
    background-color: #fff;
-   padding: 10px;
+   /*padding: 10px;*/
    border: 1px solid #ccc;
-   font-size: 1.2em;
+   font-size: .75em;
    width: 12em;
 }
+
+.table-menu ul { list-style: none; padding: 10px;}
+
+.table-menu li label { display: inline; margin: 0; }
+
+ .table-menu li input { display: inline; }
 
 .table-menu-hidden {
    left: -999em;
@@ -371,7 +379,6 @@ textarea { display: block; margin-bottom: 1.5em; width: 100%; min-height: 300px;
 
 .table-wrapper {
    position: relative;
-   margin: 5em 5%;
 }
 
 /* ==|== state =============================================================== */
@@ -490,10 +497,20 @@ textarea { display: block; margin-bottom: 1.5em; width: 100%; min-height: 300px;
   
   input[type="submit"], input[type="reset"] { width: 25%; }
 
-  .enhanced th.optional, .enhanced td.optional {
+}
+
+@media screen and (min-width: 500px) {
+   .enhanced th.optional, 
+   .enhanced td.optional {
       display: table-cell;
    }
+}
 
+@media screen and (min-width: 800px) {
+   .enhanced th, 
+   .enhanced td {
+      display: table-cell;
+   }
 }
 
 

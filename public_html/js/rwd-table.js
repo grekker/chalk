@@ -119,7 +119,7 @@
 
 $(function(){ // on DOM ready
 
-   $("#tech-companies").table({
+   $(".respond").table({
       idprefix: "co-",
       persist: "persist"
    });

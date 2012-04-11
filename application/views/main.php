@@ -51,7 +51,7 @@
       <p class="is-warning">You have 101248 items to grade.  Oh dear. <a href="#">Get a move on.</a></p>
       <h2>Sample Table</h2>
       <div class="table-wrapper">
-      <table>
+      <table class="respond">
         <thead>
           <tr>
             <th class="essential">Name</th>
@@ -133,6 +133,7 @@
   <!-- scripts concatenated and minified via build script -->
   <script src="js/plugins.js"></script>
   <script src="js/script.js"></script>
+  <script src="js/libs/jquery-ui.widget.min.js"></script>
   <script src="js/rwd-table.js"></script>
   <!-- end scripts -->
 
