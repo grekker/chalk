@@ -11,6 +11,15 @@ class Users_model extends CI_Model{
 		//Returns a result set containing the student
 		$query = $this->db->where('email',$email)->limit(1)->get('users');
 	}
+	
+	function getAllStudents($email){
+		$query = $this->db->get('users')->where('lid', STUDENT_LEVEL);
+	}
+	
+	function getAllTeachers($email){
+		$query = $this->db->get('users')->where('lid', TEACHER_LEVEL);
+	}
+	
 
 	// Setters //
 	
@@ -57,7 +66,7 @@ class Users_model extends CI_Model{
 	// Delete //
 	
 	function deleteUser($email){
-		$this->db->delete('assignments', array('email', $email));
+		$this->db->delete('users', array('email', $email));
 	}
 	
 	

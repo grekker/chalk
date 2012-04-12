@@ -4,15 +4,19 @@ class Assignments_model extends CI_Model{
 
 	// Getters //
 
-	function getAssignment(){
-		$query = $this->db->where('assignmentID',$assID)->limit(1)->get('users');
+	function getAssignment($assID){
+		$query = $this->db->where('assignmentID',$assID)->limit(1)->get('assignments');
+	}
+	
+	function getAllAssignments(){
+		$query = $this->db->get('assignments');
 	}
 
 
 	// Setters //
 
 	function setAssignment($assID, $data){
-		$this->db->where('assignmentID',$assID)->update('assignment', $data);
+		$this->db->where('assignmentID',$assID)->update('assignments', $data);
 	}
 
 	function setAssignmentNumber($assID, $assNum){
@@ -45,7 +49,7 @@ class Assignments_model extends CI_Model{
 	
 	// Delete //
 	
-	function deleteUser($assID){
+	function deleteAssignment($assID){
 		$this->db->delete('assignments', array('assignmentID', $assID));
 	}
 
