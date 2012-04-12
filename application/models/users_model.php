@@ -37,12 +37,12 @@ class Users_model extends CI_Model{
 		$this->setData($email, $data);
 	}
 
-	function setEmail($email){
-		$data = new Array('email'=>$email);
+	function setEmail($email, $newemail){
+		$data = new Array('email'=>$newemail);
 		$this->setData($email,$data);
 	}
 
-	function setPassword($pass){
+	function setPassword($email, $pass){
 		$data = new Array('password'=>$pass);
 		$this->setData($email,$data);
 	}
