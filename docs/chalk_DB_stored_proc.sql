@@ -26,6 +26,8 @@ CREATE TABLE `assignments`(
 	`assignmentID` int(10) unsigned NOT NULL auto_increment PRIMARY KEY,
 	`dueDate` date NOT NULL,
 	`setDate` date NOT NULL,
+	`information` varchar(100), 
+	`maxPoints` double,
 	`courseID` int(10) unsigned NOT NULL,
  	 CONSTRAINT coursesFK FOREIGN KEY (courseID) REFERENCES courses(courseID) ON DELETE CASCADE
 );
@@ -34,7 +36,9 @@ CREATE TABLE `assignments`(
 CREATE TABLE `submissions`(
 	`submissionID` int(10) unsigned NOT NULL auto_increment PRIMARY KEY,
 	`submissionDate` date NOT NULL,
-	`grade` float,
+	`grade` double,
+	`comments` varchar(250),
+	`attachedFiles` varchar(200),
 	`userID` int(10) unsigned NOT NULL,
 	`assignmentID` int(10) unsigned NOT NULL,
 	CONSTRAINT userIdFK FOREIGN KEY (userID) references users(userID) ON DELETE CASCADE,
