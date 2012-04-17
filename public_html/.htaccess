@@ -16,7 +16,6 @@
 ###
 
 
-
 # ----------------------------------------------------------------------
 # Better website experience for IE users
 # ----------------------------------------------------------------------
@@ -332,7 +331,7 @@ FileETag None
 # ----------------------------------------------------------------------
 <IfModule mod_rewrite.c>
   RewriteCond $1 !^(index\.php|img|js|css|404\.html|apple-touch-icon*|crossdomain\.xml|favicon\.ico|humans\.txt|robots\.txt)
-  RewriteRule ^(.*)$ /index.php/$1 [L]
+#  RewriteRule ^(.*)$ /index.php/$1 [L]
 </IfModule>
 
 
