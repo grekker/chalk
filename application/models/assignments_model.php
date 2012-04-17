@@ -8,19 +8,20 @@ class Assignments_model extends CI_Model{
 		$query = $this->db->where('assignmentID',$assID)->limit(1)->get('assignments');
 	}
 	
-	function getAllAssignments(){
+	function getAllAssignments($courseId = false){
+		if (!empty($courseId)) $this->db->where('cid', $courseId)
 		$query = $this->db->get('assignments');
 	}
 
-
+	
 	// Setters //
 
 	function setAssignment($assID, $data){
 		$this->db->where('assignmentID',$assID)->update('assignments', $data);
 	}
 
-	function setAssignmentNumber($assID, $assNum){
-		$data = new Array('assignmentNumber'=>$assNum);
+	function setTitle($assID, $assTitle){
+		$data = new Array('title'=>$assTitle);
 		$this->setData($assID, $data);
 	}
 
@@ -39,11 +40,17 @@ class Assignments_model extends CI_Model{
 		$this->setData($assID,$data);
 	}
 
+	function setCourseId($assID, $courseId){
+		$data = new Array('cid'=>$courseId);
+		$this->setData($assId,$data);
+	}
+
 
 	// Create //
 
-	function createAssignment($assNum, $dateSet, $dateDue, $maxPoints){
-		$data = new Array('assignmentNumber'=>$assNum, 'dateSet'=>$dateSet, 'dateDue'=>$dateDue, 'maxPoints'=>$maxPoints);
+	function createAssignment($assTitle, $dateDue, $courseId, $maxPoints, $information = null){
+		//Date set should correspond to time of calling this function
+		$data = new Array('title'=>$assTitle, 'dateSet'=>$dateSet, 'dateDue'=>$dateDue, 'cid'=>$courseId, 'maxPoints'=>$maxPoints, 'information'=>$information);
 		$this->db->insert('assignments', $data);
 	}
 	

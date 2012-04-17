@@ -12,14 +12,18 @@ class Users_model extends CI_Model{
 		$query = $this->db->where('email',$email)->limit(1)->get('users');
 	}
 	
-	function getAllStudents($email){
+	function getAllStudents(){
 		$query = $this->db->get('users')->where('lid', STUDENT_LEVEL);
 	}
 	
-	function getAllTeachers($email){
+	function getAllTeachers(){
 		$query = $this->db->get('users')->where('lid', TEACHER_LEVEL);
 	}
 	
+	function getStudentGrades($email = false){
+		if (!empty($email)) $this->db->where('email',$email);
+		$query = $this->db->//RESUME HERE
+	}
 
 	// Setters //
 	
