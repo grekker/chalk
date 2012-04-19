@@ -17,6 +17,7 @@ CREATE TABLE  `users` (
 
 CREATE TABLE `courses`(
 	`courseID` int(10) unsigned NOT NULL auto_increment PRIMARY KEY,
+	`courseName` varchar(50) NOT NULL,
 	`courseCode` varchar(50) NOT NULL,
 	`startDate` date NOT NULL,
 	`endDate` date NOT NULL
@@ -24,9 +25,9 @@ CREATE TABLE `courses`(
 
 CREATE TABLE `assignments`(
 	`assignmentID` int(10) unsigned NOT NULL auto_increment PRIMARY KEY,
-	`dueDate` date NOT NULL,
-	`setDate` date NOT NULL,
-	`information` varchar(100), 
+	`dueDate` datetime NOT NULL,
+	`setDate` datetime NOT NULL,
+	`information` text, 
 	`maxPoints` double,
 	`courseID` int(10) unsigned NOT NULL,
  	 CONSTRAINT coursesFK FOREIGN KEY (courseID) REFERENCES courses(courseID) ON DELETE CASCADE
@@ -35,10 +36,10 @@ CREATE TABLE `assignments`(
 
 CREATE TABLE `submissions`(
 	`submissionID` int(10) unsigned NOT NULL auto_increment PRIMARY KEY,
-	`submissionDate` date NOT NULL,
+	`submissionDate` datetime NOT NULL,
 	`grade` double,
-	`comments` varchar(250),
-	`attachedFiles` varchar(200),
+	`comments` text,
+	`attachedFiles` text,
 	`userID` int(10) unsigned NOT NULL,
 	`assignmentID` int(10) unsigned NOT NULL,
 	CONSTRAINT userIdFK FOREIGN KEY (userID) references users(userID) ON DELETE CASCADE,
@@ -53,5 +54,17 @@ CREATE TABLE `users_courses`(
 	PRIMARY KEY(userID, courseID)
 );
 
-INSERT INTO users_level (levelName) VALUES ('green');
-INSERT INTO users (firstName, lastName, passwd, email, userLevelID) VALUES ('Dave', 'Tester', '123pass', 'dtester@gmail.com', 1);
+INSERT INTO users_level (levelName) VALUES ('student');
+INSERT INTO users_level (levelName) VALUES ('teacher');
+INSERT INTO courses (courseName, courseCode, startDate, endDate) VALUES ('Content Management Systems', 'JMA5something', '2012-01-05', '2012-04-28');
+INSERT INTO users (firstName, lastName, passwd, email, userLevelID) VALUES ('Dave', 'Tester', 'student', 'student@gmail.com', 1);
+INSERT INTO users (firstName, lastName, passwd, email, userLevelID) VALUES ('Cody', 'Eggnitor', 'student', 'student@duq.edu', 1);
+INSERT INTO users (firstName, lastName, passwd, email, userLevelID) VALUES ('Jo', 'Mamma', 'teacher', 'teacher@gmail.com', 2);
+INSERT INTO users_courses (userID, courseID) VALUES (1, 1);
+INSERT INTO users_courses (userID, courseID) VALUES (2, 1);
+INSERT INTO users_courses (userID, courseID) VALUES (3, 1);
+INSERT INTO assignments (dueDate, setDate, information, maxPoints, courseID) VALUES ('2012-4-28 11:00:00', '2012-4-01 16:40:00', 'Take everything that you''ve learned up to this point and create your own CMS. This CMS should be able to 1) Store data effectively, 2) Present its content beautifully, 3) Cover all 17 components of a CMS. Extra credit is given if your CMS serves coffee or tea.', 100, 1);
+INSERT INTO submissions (submissionDate, grade, comments, userID, assignmentID) VALUES ('2012-4-28 1:30:00', '93', 'Overall, good project. Needs more cross-browser support, though. The green tea was a plus.', 1, 1);
+INSERT INTO assignments (dueDate, setDate, information, maxPoints, courseID) VALUES ('2012-4-25 16:40:00', '2012-3-25', 'Write a paper about the content that you plan to put into your CMS. Your goal here is to focus on the content itself--what do you want your users to take away from your site? If they could describe your site in one paragraph, what would they write?', 50, 1);
+INSERT INTO submissions (submissionDate, grade, userID, assignmentID) VALUES ('2012-4-25 16:39:47', '50', 1, 2);
+INSERT INTO submissions (submissionDate, grade, comments, userID, assignmentID) VALUES ('2012-4-27 15:12:15', '45', 'Excellent paper, but I had to deduct points since it was late.',2, 2);
