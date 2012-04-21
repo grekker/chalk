@@ -2,55 +2,66 @@
 
 class Assignments_model extends CI_Model{
 
-	// Getters //
 
+	function __construct(){
+		parent::__construct();
+	}
+
+	// Getters //
+	
 	function getAssignment($assID){
-		$query = $this->db->where('assignmentID',$assID)->limit(1)->get('assignments');
+		return $this->db->where('assignmentID',$assID)->limit(1)->get('assignments');
 	}
 	
 	function getAllAssignments($courseId = false){
-		if (!empty($courseId)) $this->db->where('cid', $courseId)
+		if (!empty($courseId))
+			$this->db->where('cid', $courseId);
 		$query = $this->db->get('assignments');
+		return $query->result();
 	}
 
 	
 	// Setters //
 
-	function setAssignment($assID, $data){
+	function setData($assID, $data){
 		$this->db->where('assignmentID',$assID)->update('assignments', $data);
 	}
 
 	function setTitle($assID, $assTitle){
-		$data = new Array('title'=>$assTitle);
+		$data = array('title'=>$assTitle);
 		$this->setData($assID, $data);
 	}
 
-	function setDateSet($assID, $dateSet){
-		$data = new Array('dateSet'=>$dateSet);
+	function setSetDate($assID, $setDate){
+		$data = array('setDate'=>$setDate);
 		$this->setData($assID, $data);
 	}
 
-	function setDateDue($assID, $dateDue){
-		$data = new Array('dateDue'=>$dateDue);
+	function setDueDate($assID, $dueDate){
+		$data = array('dateDue'=>$dueDate);
 		$this->setData($assID,$data);
 	}
 
 	function setMaxPoints($assID, $maxPoints){
-		$data = new Array('maxPoints'=>$maxPoints);
+		$data = array('maxPoints'=>$maxPoints);
 		$this->setData($assID,$data);
 	}
 
 	function setCourseId($assID, $courseId){
-		$data = new Array('cid'=>$courseId);
+		$data = array('cid'=>$courseId);
 		$this->setData($assId,$data);
+	}
+	function setInformation($assID, $information){
+		$data = array('information'=>$information);
+		$this->setData($assID, $data);
 	}
 
 
 	// Create //
 
-	function createAssignment($assTitle, $dateDue, $courseId, $maxPoints, $information = null){
+	function createAssignment($assTitle, $dueDate, $courseId, $maxPoints, $information = null){
 		//Date set should correspond to time of calling this function
-		$data = new Array('title'=>$assTitle, 'dateSet'=>$dateSet, 'dateDue'=>$dateDue, 'cid'=>$courseId, 'maxPoints'=>$maxPoints, 'information'=>$information);
+		$data = array('title'=>$assTitle, 'setDate'=>date('Y-m-d H:i:s'), 'dueDate'=>$dueDate, 'courseID'=>$courseId, 'maxPoints'=>$maxPoints, 'information'=>$information);
 		$this->db->insert('assignments', $data);
 	}
 	
