@@ -13,7 +13,7 @@ class Users_model extends CI_Model{
 	function getUser($email){
 		//Returns a result set containing the student
 		$query = $this->db->where('email',$email)->limit(1)->get('users');
-		return $query->result();
+		return $query->row();
 	}
 	
 	function getAllStudents(){
@@ -59,13 +59,13 @@ class Users_model extends CI_Model{
 
 	// Create //
 
-	function createUser($fname, $lname, $password, $email, $lid){
-		$data = Array('Fname'=>$fname, 'Lname'=>$lname, 'email'=>$email, 'password'=>$password, 'LID'=>$lid);
+	function createUser($fname, $lname, $email, $password, $lid){
+		$data = Array('firstName'=>$fname, 'lastName'=>$lname, 'email'=>$email, 'passwd'=>$password, 'userLevelID'=>$lid);
 		$this->db->insert('users', $data);
 	}
 
 	function createStudent($fname, $lname, $email, $password){
-		$this->createUser($fname, $lname, $email, STUDENT_LEVEL);	
+		$this->createUser($fname, $lname, $email, $password, STUDENT_LEVEL);	
 	}
 
 	function createTeacher($fname, $lname, $email, $password){
@@ -76,7 +76,7 @@ class Users_model extends CI_Model{
 	// Delete //
 	
 	function deleteUser($email){
-		$this->db->delete('users', array('email', $email));
+		$this->db->where('email', $email)->delete('users');
 	}
 	
 	
