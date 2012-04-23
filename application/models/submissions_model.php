@@ -6,21 +6,24 @@ class Submissions_model extends CI_Model{
 
 	function getAllGrades(){
 		$query = $this->db->get('submissions');
+		return $query->result();
 	}
 
 	function getStudentGrades($userID){
 		$query = $this->db->where('userID', $userID)->get('submissions');
+		return $query->result();
 	}
 	
 	function getAssignmentGrades($assID){
 		$query = $this->db->where('assignmentID', $assID)->get('submissions');
+		return $query->result();
 	}
 	
 
 	// Setters //
 
 	function setGrade($assID, $userID, $grade){
-		$data = new Array('assignmentID'=>$assID, 'userID'=>$userID, 'grade'=>$grade);
+		$data = Array('assignmentID'=>$assID, 'userID'=>$userID, 'grade'=>$grade);
 		$this->db->where('assignmentID',$assID)->where('userID',$userID)->update('submissions', $data);
 	}
 
@@ -28,14 +31,14 @@ class Submissions_model extends CI_Model{
 	// Create //
 
 	function createSubmission($assID, $userID, $dateSubmitted){
-		$data = new Array('assignmentID'=>$assID, 'userID'=>$userID, 'grade'=>NULL, 'dateSubmitted'=>$dateSubmitted);
+		$data = Array('assignmentID'=>$assID, 'userID'=>$userID, 'grade'=>NULL, 'dateSubmitted'=>$dateSubmitted);
 		$this->db->insert('submissions', $data);
 	}
 	
 	// Delete //
 	
 	function deleteSubmission($assID, $userID){
-		$this->db->where('assignmentID',$assID)->where('userID', $userID)->delete('submissions'));
+		$this->db->where('assignmentID',$assID)->where('userID', $userID)->delete('submissions');
 	}
 
 	

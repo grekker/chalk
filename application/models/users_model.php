@@ -2,27 +2,33 @@
 
 class Users_model extends CI_Model{
 	
-	define('STUDENT_LEVEL', 1);
-	define('TEACHER_LEVEL', 2);	
+	function __construct(){
+		parent::__construct();
+		define('STUDENT_LEVEL', 1);
+		define('TEACHER_LEVEL', 2);	
+	}
 
 	// Getters //
 
 	function getUser($email){
 		//Returns a result set containing the student
 		$query = $this->db->where('email',$email)->limit(1)->get('users');
+		return $query->result();
 	}
 	
 	function getAllStudents(){
-		$query = $this->db->get('users')->where('lid', STUDENT_LEVEL);
+		$query = $this->db->where('userLevelID', STUDENT_LEVEL)->get('users');
+		return $query->result();
 	}
 	
 	function getAllTeachers(){
-		$query = $this->db->get('users')->where('lid', TEACHER_LEVEL);
+		$query = $this->db->where('lid', TEACHER_LEVEL)->get('users');
+		return $query->result();
 	}
 	
 	function getStudentGrades($email = false){
 		if (!empty($email)) $this->db->where('email',$email);
-		$query = $this->db->//RESUME HERE
+		//$query = $this->db->//RESUME HERE
 	}
 
 	// Setters //
@@ -32,29 +38,29 @@ class Users_model extends CI_Model{
 	}
 
 	function setFirstName($email, $fname){
-		$data = new Array('Fname'=>$fname);
+		$data = Array('Fname'=>$fname);
 		$this->setData($email, $data);
 	}
 
 	function setLastName($email, $lname){
-		$data = new Array('Lname'=>$lname);
+		$data = Array('Lname'=>$lname);
 		$this->setData($email, $data);
 	}
 
 	function setEmail($email, $newemail){
-		$data = new Array('email'=>$newemail);
+		$data = Array('email'=>$newemail);
 		$this->setData($email,$data);
 	}
 
 	function setPassword($email, $pass){
-		$data = new Array('password'=>$pass);
+		$data = Array('password'=>$pass);
 		$this->setData($email,$data);
 	}
 
 	// Create //
 
 	function createUser($fname, $lname, $password, $email, $lid){
-		$data = new Array('Fname'=>$fname, 'Lname'=>$lname, 'email'=>$email, 'password'=>$password, 'LID'=>$lid);
+		$data = Array('Fname'=>$fname, 'Lname'=>$lname, 'email'=>$email, 'password'=>$password, 'LID'=>$lid);
 		$this->db->insert('users', $data);
 	}
 
