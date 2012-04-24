@@ -38,12 +38,12 @@ class Users_model extends CI_Model{
 	}
 
 	function setFirstName($email, $fname){
-		$data = Array('Fname'=>$fname);
+		$data = Array('firstName'=>$fname);
 		$this->setData($email, $data);
 	}
 
 	function setLastName($email, $lname){
-		$data = Array('Lname'=>$lname);
+		$data = Array('lastName'=>$lname);
 		$this->setData($email, $data);
 	}
 
@@ -53,7 +53,7 @@ class Users_model extends CI_Model{
 	}
 
 	function setPassword($email, $pass){
-		$data = Array('password'=>$pass);
+		$data = Array('passwd'=>$pass);
 		$this->setData($email,$data);
 	}
 

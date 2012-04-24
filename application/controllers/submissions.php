@@ -8,26 +8,14 @@ class Submissions extends MY_Controller {
 
 	public function __construct(){
 		parent::__construct();
+		$this->load->model('Submissions_model');
+
 	}
 
 	public function index()
 	{
 		echo "Reached the index of Submissions.<br />";
-		$this->load->model('Submissions_model');
 		echo 'loaded model<br />';
-
-		$data = $this->Submissions_model->getAllGrades();
-		//print_r($data);
-		echo '<br /><br />';
-		foreach($data as $row){
-			echo 'Submission Date: ' . $row->submissionDate . '<br />';
-			echo 'Grade: ' . $row->grade . '<br />';
-			echo 'Comments: ' . $row->comments . '<br />';
-			echo 'Attached File: ' . $row->attachedFiles . '<br />';
-			echo 'User ID: ' . $row->userID . '<br />';
-			echo 'Assignment ID: ' . $row->assignmentID . '<br /><br />';
-		}
-
 	}
 
 	public function create(){
@@ -42,12 +30,26 @@ class Submissions extends MY_Controller {
 		echo "delete Submissions here";
 	}
 
-	public function viewall(){
-		echo "view all of the Submissions";
+	public function viewAllGrades(){
+	
+		$data = $this->Submissions_model->getAllGrades();
+		foreach($data as $row){
+			echo 'Submission Date: ' . $row->submissionDate . '<br />';
+			echo 'Grade: ' . $row->grade . '<br />';
+			echo 'Comments: ' . $row->comments . '<br />';
+			echo 'Attached File: ' . $row->attachedFiles . '<br />';
+			echo 'User ID: ' . $row->userID . '<br />';
+			echo 'Assignment ID: ' . $row->assignmentID . '<br /><br />';
+		}
 	}
 
-	public function viewsingle(){
-		echo "view the details of a single assignment";
+	public function viewSingle(){
+		$row = $this->Submissions_model->getUser('student@gmail.com');
+		echo 'First Name: ' . $row->firstName . '<br />';
+		echo 'Last Name: ' . $row->lastName . '<br />';
+		echo 'Password: ' . $row->passwd . '<br />';
+		echo 'Email: ' . $row->email . '<br />';
+		echo 'Level: ' . $row->userLevelID . '<br /><br />';
 	}
 
 }

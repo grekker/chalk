@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+<?php $this->load->view('header'); ?>
 <div role="main" id="main">
 	<h2>View Single Student</h2>
     
@@ -11,11 +11,11 @@
 <th>Grade in Class</th>
 </tr>
 <tr>
-<td>Student 1</td>
-<td>student@email.com</td>
+<td><?php echo $firstName ?></td>
+<td><?=$email?></td>
 <td>89%</td>
 </tr>
 </table> 
 </div>
-<?php include('sidebar.php'); ?>
-<?php include('footer.php'); ?>
+<?php $this->load->view('sidebar'); ?>
+<?php $this->load->view('footer'); ?>

@@ -6,14 +6,14 @@ ini_set('display_errors',1);
 
 class Users extends MY_Controller {
 
-	//public function __construct(){
-		//parent::__construct();
-	//}
+	public function __construct(){
+		parent::__construct();
+		$this->load->model('Users_model');
+	}
 
 	public function index(){
 	
 		echo "Reached the index of Users.<br />";
-		$this->load->model('Users_model');
 		echo 'loaded model<br />';
 
 	
@@ -21,44 +21,55 @@ class Users extends MY_Controller {
 
 	public function create(){
 	
-		$this->load->model('Users_model');
 		$this->Users_model->createStudent('Anu', 'Uzer', 'auzer@gmail.com', 'Student');
 	
 	}
 	
 	public function edit(){
+	
+		$this->Users_model->setFirstName('auzer@gmail.com', 'Anold');
+		$this->Users_model->setLastName('auzer@gmail.com', 'One');
+		$this->Users_model->setPassword('auzer@gmail.com', 'student');
+		$this->Users_model->setEmail('auzer@gmail.com', 'aone@gmail.com');
+
+	
 	}
 
 	public function delete(){
 	
-		$this->load->model('Users_model');
 		$this->Users_model->deleteUser('auzer@gmail.com');
 	
 	}
 
 	public function viewAll() {	
 	
-		$this->load->model('Users_model');
 		$data = $this->Users_model->getAllStudents();
-		foreach($data as $row) {
-			echo 'First Name: ' . $row->firstName . '<br />';
-			echo 'Last Name: ' . $row->lastName . '<br />';
-			echo 'Password: ' . $row->passwd . '<br />';
-			echo 'Email: ' . $row->email . '<br />';
-			echo 'Level: ' . $row->userLevelID . '<br /><br />';
-		}
+		//foreach($data as $row) {
+		//	echo 'First Name: ' . $row->firstName . '<br />';
+		//	echo 'Last Name: ' . $row->lastName . '<br />';
+		//	echo 'Password: ' . $row->passwd . '<br />';
+		//	echo 'Email: ' . $row->email . '<br />';
+		//	echo 'Level: ' . $row->userLevelID . '<br /><br />';
+		//}
+		
+		$send = array('entry' => $data);
+		
+		$this->load->view('view_all_students', $send);
+		
 	}
 
 	public function viewSingle(){
 	
-		$this->load->model('Users_model');
 		$row = $this->Users_model->getUser('student@gmail.com');
-		echo 'First Name: ' . $row->firstName . '<br />';
-		echo 'Last Name: ' . $row->lastName . '<br />';
-		echo 'Password: ' . $row->passwd . '<br />';
-		echo 'Email: ' . $row->email . '<br />';
-		echo 'Level: ' . $row->userLevelID . '<br /><br />';
+		//echo 'First Name: ' . $row->firstName . '<br />';
+		//echo 'Last Name: ' . $row->lastName . '<br />';
+		//echo 'Password: ' . $row->passwd . '<br />';
+		//echo 'Email: ' . $row->email . '<br />';
+		//echo 'Level: ' . $row->userLevelID . '<br /><br />';
 		
+		
+		
+		$this->load->view('view_single_student', $row);
 	}
 
 }
