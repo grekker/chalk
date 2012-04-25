@@ -52,7 +52,7 @@ CREATE TABLE `users_courses`(
 	`courseID` int(10) unsigned NOT NULL,
 	CONSTRAINT usersidfkb FOREIGN KEY (email) references users(email) ON DELETE CASCADE,
 	CONSTRAINT courseIdFK FOREIGN KEY (courseID) references courses(courseID) ON DELETE CASCADE,
-	PRIMARY KEY(userID, courseID)
+	PRIMARY KEY(email, courseID)
 );
 
 INSERT INTO users_level (levelName) VALUES ('student');
@@ -62,10 +62,10 @@ INSERT INTO users (firstName, lastName, passwd, email, userLevelID) VALUES ('Dav
 INSERT INTO users (firstName, lastName, passwd, email, userLevelID) VALUES ('Cody', 'Eggnitor', 'student', 'student@duq.edu', 1);
 INSERT INTO users (firstName, lastName, passwd, email, userLevelID) VALUES ('Jo', 'Mamma', 'teacher', 'teacher@gmail.com', 2);
 INSERT INTO users_courses (email, courseID) VALUES ('student@gmail.com', 1);
-INSERT INTO users_courses (userID, courseID) VALUES ('student@gmail.com', 1);
-INSERT INTO users_courses (userID, courseID) VALUES ('student@gmail.com', 1);
+INSERT INTO users_courses (userID, courseID) VALUES ('student@duq.edu', 1);
+INSERT INTO users_courses (userID, courseID) VALUES ('teacher@gmail.com', 1);
 INSERT INTO assignments (dueDate, setDate, title, information, maxPoints, courseID) VALUES ('2012-4-28 11:00:00', '2012-4-01 16:40:00', 'Final Project', 'Take everything that you''ve learned up to this point and create your own CMS. This CMS should be able to 1) Store data effectively, 2) Present its content beautifully, 3) Cover all 17 components of a CMS. Extra credit is given if your CMS serves coffee or tea.', 100, 1);
 INSERT INTO submissions (submissionDate, grade, comments, email, assignmentID) VALUES ('2012-4-28 1:30:00', '93', 'Overall, good project. Needs more cross-browser support, though. The green tea was a plus.', 'student@gmail.com', 1);
 INSERT INTO assignments (dueDate, setDate, title, information, maxPoints, courseID) VALUES ('2012-4-25 16:40:00', '2012-3-25', 'Midterm paper on your personal project', 'Write a paper about the content that you plan to put into your CMS. Your goal here is to focus on the content itself--what do you want your users to take away from your site? If they could describe your site in one paragraph, what would they write?', 50, 1);
-INSERT INTO submissions (submissionDate, grade, userID, assignmentID) VALUES ('2012-4-25 16:39:47', '50', 1, 2);
-INSERT INTO submissions (submissionDate, grade, comments, userID, assignmentID) VALUES ('2012-4-27 15:12:15', '45', 'Excellent paper, but I had to deduct points since it was late.',2, 2);
+INSERT INTO submissions (submissionDate, grade, email, assignmentID) VALUES ('2012-4-25 16:39:47', '50', 'student@gmail.com', 2);
+INSERT INTO submissions (submissionDate, grade, comments, email, assignmentID) VALUES ('2012-4-27 15:12:15', '45', 'Excellent paper, but I had to deduct points since it was late.','student@duq.edu', 2);
