@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+<?php $this->load->view('header') ?>
 <div role="main" id="main">
 	<h2>Assignment Details</h2>
 	<div class="table-wrapper">
@@ -12,5 +12,5 @@
       </form>
 	</div>
 </div>
-<?php include('sidebar.php'); ?>
-<?php include('footer.php'); ?>
+<?php $this->load->view('sidebar') ?>
+<?php $this->load->view('footer') ?>
