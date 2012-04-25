@@ -41,14 +41,14 @@ CREATE TABLE `submissions`(
 	`grade` double,
 	`comments` text,
 	`attachedFiles` text,
-	`email` varchar(100) unsigned NOT NULL,
+	`email` varchar(100)  NOT NULL,
 	`assignmentID` int(10) unsigned NOT NULL,
 	CONSTRAINT userIdFK FOREIGN KEY (email) references users(email) ON DELETE CASCADE,
 	CONSTRAINT assignmentIdFK FOREIGN KEY (assignmentID) references assignments(assignmentID) ON DELETE CASCADE
 );
 
 CREATE TABLE `users_courses`(
-	`email` varchar(100) unsigned NOT NULL,
+	`email` varchar(100) NOT NULL,
 	`courseID` int(10) unsigned NOT NULL,
 	CONSTRAINT usersidfkb FOREIGN KEY (email) references users(email) ON DELETE CASCADE,
 	CONSTRAINT courseIdFK FOREIGN KEY (courseID) references courses(courseID) ON DELETE CASCADE,
