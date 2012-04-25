@@ -41,16 +41,16 @@ CREATE TABLE `submissions`(
 	`grade` double,
 	`comments` text,
 	`attachedFiles` text,
-	`userID` int(10) unsigned NOT NULL,
+	`email` var(100) unsigned NOT NULL,
 	`assignmentID` int(10) unsigned NOT NULL,
-	CONSTRAINT userIdFK FOREIGN KEY (userID) references users(userID) ON DELETE CASCADE,
+	CONSTRAINT userIdFK FOREIGN KEY (email) references users(email) ON DELETE CASCADE,
 	CONSTRAINT assignmentIdFK FOREIGN KEY (assignmentID) references assignments(assignmentID) ON DELETE CASCADE
 );
 
 CREATE TABLE `users_courses`(
-	`userID` int(10) unsigned NOT NULL,
+	`email` varchar(100) unsigned NOT NULL,
 	`courseID` int(10) unsigned NOT NULL,
-	CONSTRAINT usersidfkb FOREIGN KEY (userID) references users(userID) ON DELETE CASCADE,
+	CONSTRAINT usersidfkb FOREIGN KEY (email) references users(email) ON DELETE CASCADE,
 	CONSTRAINT courseIdFK FOREIGN KEY (courseID) references courses(courseID) ON DELETE CASCADE,
 	PRIMARY KEY(userID, courseID)
 );
