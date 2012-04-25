@@ -41,7 +41,7 @@ CREATE TABLE `submissions`(
 	`grade` double,
 	`comments` text,
 	`attachedFiles` text,
-	`email` var(100) unsigned NOT NULL,
+	`email` varchar(100) unsigned NOT NULL,
 	`assignmentID` int(10) unsigned NOT NULL,
 	CONSTRAINT userIdFK FOREIGN KEY (email) references users(email) ON DELETE CASCADE,
 	CONSTRAINT assignmentIdFK FOREIGN KEY (assignmentID) references assignments(assignmentID) ON DELETE CASCADE
