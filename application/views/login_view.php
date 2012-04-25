@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
-	<link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-
-<p>Login View</p>
-
-
-<?php echo form_open('admin');  ?>
+<?php include('header.php'); ?>
+<div role="main" id="main">
+	
+    <h2>Login</h2>
+    
+    <?php echo form_open('admin');  ?>
 
 <p>
 <?php 
@@ -32,5 +25,6 @@ echo form_password('password', '', 'id="password"');
 
 <?php echo form_close(); ?>
 
-</body>
-</html>
+</div>
+<?php include('sidebar.php'); ?>
+<?php include('footer.php'); ?>
