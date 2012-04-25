@@ -4,20 +4,22 @@ error_reporting(E_ALL);
 ini_set('display_errors',1);
 class Assignments extends MY_Controller {
 
-	//public function __construct(){
-		//parent::MY_Controller();
-	//}
-
-	public function index()
-	{
-		echo "Reached the index of assignments.<br />";
-		//$this->load->view('dashboard_view');
+	public function __construct(){
+		parent::__construct();
 		$this->load->model('Assignments_model');
+	}
+
+	public function index()	{
+		echo "Reached the index of assignments.<br />";
 		echo 'loaded model<br />';
 
+	}
+	
+	// GETTERS //
+	
+	public function viewAllAssignments(){
+	
 		$data = $this->Assignments_model->getAllAssignments();
-		print_r($data);
-		echo '<br /><br />';
 		foreach($data as $row){
 			echo 'title: ' . $row->title . '<br />';
 			echo 'setDate: ' . $row->setDate . '<br />';
@@ -25,29 +27,41 @@ class Assignments extends MY_Controller {
 			echo 'courseId: ' . $row->courseID . '<br />';
 			echo 'maxPoints: ' . $row->maxPoints . '<br />';
 			echo 'information: ' . $row->information . '<br />';
-		}
-
+		}	
 	}
 
-	public function create(){
-		echo "This would be where you would create an assignment";
+	public function viewSingleAssignment(){
+	
+	$data = $this->Assignments_model->getAssignment(1);
+			echo 'title: ' . $data->title . '<br />';
+			echo 'setDate: ' . $data->setDate . '<br />';
+			echo 'dueDate: ' . $data->dueDate . '<br />';
+			echo 'courseId: ' . $data->courseID . '<br />';
+			echo 'maxPoints: ' . $data->maxPoints . '<br />';
+			echo 'information: ' . $data->information . '<br />';
+			
 	}
+	
+	// SETTERS //
 	
 	public function edit(){
 		echo "edit assignments here";
 	}
+	
+	// CREATE //
 
+	public function create(){
+		$this->Assignments_model->createAssignment('Make a Magento site', '2012-10-12', 1, 100, 'make a site using Magento');
+	}
+	
+	
+	// DELETE //
+	
 	public function delete(){
-		echo "delete assignments here";
+		$this->Assignments_model->deleteAssignment(5);
 	}
 
-	public function viewall(){
-		echo "view all of the assignments";
-	}
-
-	public function viewsingle(){
-		echo "view the details of a single assignment";
-	}
+	
 
 }
 
