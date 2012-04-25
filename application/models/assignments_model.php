@@ -12,7 +12,8 @@ ini_set('display_errors',1);
 	// Getters //
 	
 	function getAssignment($assID){
-		return $this->db->where('assignmentID',$assID)->limit(1)->get('assignments');
+		$query = $this->db->where('assignmentID',$assID)->limit(1)->get('assignments');
+		return $query->row();
 	}
 	
 	function getAllAssignments($courseId = false){
@@ -63,14 +64,15 @@ ini_set('display_errors',1);
 
 	function createAssignment($assTitle, $dueDate, $courseId, $maxPoints, $information = null){
 		//Date set should correspond to time of calling this function
-		$data = array('title'=>$assTitle, 'setDate'=>date('Y-m-d H:i:s'), 'dueDate'=>$dueDate, 'courseID'=>$courseId, 'maxPoints'=>$maxPoints, 'information'=>$information);
+		$data = array('title'=>$assTitle, 'setDate'=>date('Y-m-d H:i:s'), 'dueDate'=>$dueDate, 'courseID'=>$courseId, 
+		'maxPoints'=>$maxPoints, 'information'=>$information);
 		$this->db->insert('assignments', $data);
 	}
 	
 	// Delete //
 	
 	function deleteAssignment($assID){
-		$this->db->delete('assignments', array('assignmentID', $assID));
+		$this->db->where('assignmentID', $assID)->delete('assignments');
 	}
 
 	
