@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+<?php $this->load->view('header') ?>
 <div role="main" id="main">
 	<form>
     <h2>Are you sure you want to delete this assignment?</h2>
@@ -7,5 +7,5 @@
 </form> 
     </form>
 </div>
-<?php include('sidebar.php'); ?>
-<?php include('footer.php'); ?>
+<?php $this->load->view('sidebar') ?>
+<?php $this->load->view('footer') ?>

@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+<?php $this->load->view('header') ?>
 <div role="main" id="main">
 	<h2>Assigment 1 Grades</h2>
 	<div class="table-wrapper">
@@ -30,5 +30,5 @@
 		</table>
 	</div>
 </div>
-<?php include('sidebar.php'); ?>
-<?php include('footer.php'); ?>
+<?php $this->load->view('sidebar') ?>
+<?php $this->load->view('footer') ?>
