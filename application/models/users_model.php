@@ -10,9 +10,9 @@ class Users_model extends CI_Model{
 
 	// Getters //
 
-	function getUser($email){
+	function getUser($userID){
 		//Returns a result set containing the student
-		$query = $this->db->where('email',$email)->limit(1)->get('users');
+		$query = $this->db->where('userID',$userID)->limit(1)->get('users');
 		return $query->row();
 	}
 	

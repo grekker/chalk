@@ -21,9 +21,15 @@ class Submissions extends MY_Controller {
 
 
 	public function viewAllGrades(){
-
 		$data = $this->Submissions_model->getAllGrades();
-	
+		foreach($data as $row){
+			echo 'Submission Date: ' . $row->submissionDate . '<br />';
+			echo 'Grade: ' . $row->grade . '<br />';
+			echo 'Comments: ' . $row->comments . '<br />';
+			echo 'Attached File: ' . $row->attachedFiles . '<br />';
+			echo 'User ID: ' . $row->userID . '<br />';
+			echo 'Assignment ID: ' . $row->assignmentID . '<br /><br />';
+		}
 	}
 	
 	public function viewAssignmentGrades(){
@@ -50,25 +56,20 @@ class Submissions extends MY_Controller {
 	
 	// SETS //
 	
-	public function edit(){
-	
-		$this->Submissions_model->setFirstName('auzer@gmail.com', 'Anold');
-	
+	public function setGrade(){
+		$this->Submissions_model->setGrade(1, 1, '98');
 	}
 	
 	// CREATE //
 	
 	public function create(){
-	
-		$this->Submissions_model->createStudent('Anu', 'Uzer', 'auzer@gmail.com', 'Student');
-	
+		$this->Submissions_model->createSubmission(1, 1, '2012-07-12');
 	}
 	
 	// DELETE //
 	
 	public function delete(){
-	
-		$this->Submissions_model->deleteSubmission('auzer@gmail.com');
+		$this->Submissions_model->deleteSubmission(1, 1);
 	
 	}
 
