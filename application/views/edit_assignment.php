@@ -4,7 +4,7 @@
 	<div class="table-wrapper">
 	  <form>
         <label>Assignment Name <input type="text" value="<?php echo $title; ?>"/></label>
-        <label>Due <input type="datetime" value="<?php echo $dueDate; ?>" /><label>
+        <label>Due <input type="datetime" value="<?php echo $dueDate; ?>" /></label>
         <label>Point Value <input type="number" value="<?php echo $maxPoints; ?>" /></label>
         <label for="description">Description</label>
         <textarea name="description"><?php echo $information; ?></textarea>
