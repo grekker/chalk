@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+<?php $this->load->view('header'); ?>
 <div role="main" id="main">
 	
     <h2>Login</h2>
@@ -26,5 +26,5 @@ echo form_password('password', '', 'id="password"');
 <?php echo form_close(); ?>
 
 </div>
-<?php include('sidebar.php'); ?>
-<?php include('footer.php'); ?>
+<?php $this->load->view('sidebar'); ?>
+<?php $this->load->view('footer'); ?>

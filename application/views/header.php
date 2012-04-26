@@ -41,7 +41,7 @@
           <li><?php echo anchor('dashboard', 'Dashboard', 'title="Dashboard"'); ?></li>
           <li><?php echo anchor('users/viewAll', 'Students', 'title="Students"'); ?></li>
           <li><?php echo anchor('assignments/viewAllAssignments', 'Assignments', 'title="Assignments"'); ?></li>
-          <li><?php echo anchor('grades', 'Grades', 'title="Grades"'); ?></li>
+          <li><?php echo anchor('admin/logout', 'Logout', 'title="Logout"'); ?></li>
         </ul>
       </nav>
     </div>
