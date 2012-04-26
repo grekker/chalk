@@ -62,10 +62,10 @@ class Assignments_model extends CI_Model{
 
 	// Create //
 
-	function createAssignment($assTitle, $dueDate, $courseId, $maxPoints, $information = null){
+	function createAssignment($data){
 		//Date set should correspond to time of calling this function
-		$data = array('title'=>$assTitle, 'setDate'=>date('Y-m-d H:i:s'), 'dueDate'=>$dueDate, 'courseID'=>$courseId, 
-		'maxPoints'=>$maxPoints, 'information'=>$information);
+		//$data = array('title'=>$assTitle, 'setDate'=>date('Y-m-d H:i:s'), 'dueDate'=>$dueDate, 'courseID'=>$courseId, 
+		//'maxPoints'=>$maxPoints, 'information'=>$information);
 		$this->db->insert('assignments', $data);
 	}
 	

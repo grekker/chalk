@@ -51,8 +51,12 @@ class Assignments extends MY_Controller {
 	// CREATE //
 	
 	public function createAssignment(){
-		//$this->Assignments_model->createAssignment('Make a Magento site', '2012-10-12', 1, 100, 'make a site using Magento');
 		$this->load->view('create_assignment');
+	}
+	
+	public function insertAssignment(){
+		$this->Assignments_model->createAssignment($_POST);
+		redirect('assignments/viewAllAssignments', 'location');
 	}
 
 	// EDIT //

@@ -2,13 +2,14 @@
 <div role="main" id="main">
 	<h2>Create Assignment</h2>
 	<div class="table-wrapper">
-	  <form>
-        <label>Assignment Name <input type="text" /></label>
-        <label>Due <input type="datetime" /><label>
-        <label>Point Value <input type="number" /></label>
+	  <?=form_open('assignments/insertAssignment'); ?>
+        <label>Assignment Name <input name="title" type="text" /></label>
+         <label>Set <input name="setDate" type="datetime" /><label>
+        <label>Due <input name="dueDate" type="datetime" /><label>
+        <label>Point Value <input name="maxPoints" type="number" /></label>
         <label for="desc">Description</label>
-        <textarea name="description"></textarea>
-        <input type="submit" name="submit" value="submit" />
+        <textarea name="information"></textarea>
+        <input type="submit" value="submit" />
       </form>
 	</div>
 </div>
