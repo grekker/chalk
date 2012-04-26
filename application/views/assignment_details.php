@@ -5,7 +5,13 @@
         <p>Points: <?php echo $maxPoints; ?></p>
         <h3>Description</h3>
         <p><?php echo $information; ?></p>
-        <p><?php echo anchor('assignments/editAssignment/' . $assignmentID, 'Edit Assignment', 'title="Edit Assignment"'); ?>
+        <p><?php 
+        
+        if($_SESSION['userLevelID'] == 2){
+              echo anchor('assignments/editAssignment/' . $assignmentID, 'Edit Assignment', 'title="Edit Assignment"'); 
+              }?>
+        
+        
 </div>
 <?php $this->load->view('sidebar') ?>
 <?php $this->load->view('footer') ?>

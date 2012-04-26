@@ -1,6 +1,8 @@
 <?php $this->load->view('header') ?>
   <div class="content clearfix">
     <div role="main" id="main">
+    
+    <h2>Welcome, <?=$_SESSION['firstName'];?>!</h2>
       <p class="is-warning">You have 101248 items to grade.  Oh dear. <a href="#">Get a move on.</a></p>
       <h2>Sample Table</h2>
       <table>

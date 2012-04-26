@@ -35,14 +35,6 @@ class Submissions extends MY_Controller {
 	public function viewAssignmentGrades(){
 		$id = $this->uri->segment(3);
 		$data = $this->Submissions_model->getAssignmentGrades($id);
-	//	foreach($data as $row){
-	//		echo 'Submission Date: ' . $row->submissionDate . '<br />';
-	//		echo 'Grade: ' . $row->grade . '<br />';
-	//		echo 'Comments: ' . $row->comments . '<br />';
-	//		echo 'Attached File: ' . $row->attachedFiles . '<br />';
-	//		echo 'User ID: ' . $row->userID . '<br />';
-	//		echo 'Assignment ID: ' . $row->assignmentID . '<br /><br />';
-	//	}
 	
 		$send = array('entry' => $data);
 	
@@ -77,14 +69,19 @@ class Submissions extends MY_Controller {
 		$this->load->view('grade_assignment', $row);
 	}
 	
+	function updateGrade(){
+		$submissionID = $this->uri->segment(3);
+		$this->Submissions_model->updateGrade($submissionID, $_POST);
+		redirect('submissions/viewAssignmentGrades/'.$submissionID, 'location');
+	}
+	
 	// CREATE //
 	
-	public function createSubmission(){
+	public function insertSubmission(){
 		$this->Submissions_model->createSubmission(1, 1, '2012-07-12');
 	}
 	
 	public function submitAssignment() {
-
 		$this->load->view('submit_assignment');
 	}
 
@@ -96,12 +93,6 @@ class Submissions extends MY_Controller {
 	
 	}
 
-	
-	function updateGrade(){
-		$submissionID = $this->uri->segment(3);
-		$this->Submissions_model->updateGrade($submissionID, $_POST);
-		redirect('submissions/viewAssignmentGrades/'.$submissionID, 'location');
-	}
 
 }
 

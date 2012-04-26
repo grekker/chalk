@@ -27,6 +27,7 @@ class Admin extends CI_Controller {
 				$_SESSION['username'] = $row->email;
 				$_SESSION['userID'] = $row->userID;
 				$_SESSION['userLevelID'] = $row->userLevelID;
+				$_SESSION['firstName'] = $row->firstName;
 				
 				redirect('dashboard');
 			}	
