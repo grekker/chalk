@@ -60,6 +60,6 @@ class Assignments extends MY_Controller {
 		$this->Assignments_model->deleteAssignment(5);
 	}
 
-
+}
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */
