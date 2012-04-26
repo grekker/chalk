@@ -33,7 +33,8 @@ class Assignments extends MY_Controller {
 	}
 	
 	public function viewAssignment(){
-		$row = $this->Assignments_model->getAssignment(2);
+		$id = $this->uri->segment(3);
+		$row = $this->Assignments_model->getAssignment($id);
 		$this->load->view('assignment_details', $row);
 	}
 	
@@ -52,6 +53,14 @@ class Assignments extends MY_Controller {
 	public function createAssignment(){
 		//$this->Assignments_model->createAssignment('Make a Magento site', '2012-10-12', 1, 100, 'make a site using Magento');
 		$this->load->view('create_assignment');
+	}
+
+	// EDIT //
+
+	public function editAssignment(){
+		$id = $this->uri->segment(3);
+		$row = $this->Assignments_model->getAssignment($id);
+		$this->load->view('edit_assignment', $row);
 	}
 	
 	// DELETE //

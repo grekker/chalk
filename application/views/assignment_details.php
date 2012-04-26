@@ -1,16 +1,11 @@
 <?php $this->load->view('header') ?>
 <div role="main" id="main">
-	<h2>Assignment Details</h2>
-	<div class="table-wrapper">
-	  <form>
-        <label>Assignment Name <input type="text" /></label>
-        <label>Due <input type="datetime" /><label>
-        <label>Point Value <input type="number" /></label>
-        <label for="desc">Description</label>
-        <textarea name="description"></textarea>
-        <input type="submit" name="submit" value="submit" />
-      </form>
-	</div>
+	<h2><?php echo $title; ?></h2>
+        <p>Due: <?php echo $dueDate; ?></p>
+        <p>Points: <?php echo $maxPoints; ?></p>
+        <h3>Description</h3>
+        <p><?php echo $information; ?></p>
+        <p><?php echo anchor('assignments/editAssignment/' . $assignmentID, 'Edit Assignment', 'title="Edit Assignment"'); ?>
 </div>
 <?php $this->load->view('sidebar') ?>
 <?php $this->load->view('footer') ?>
