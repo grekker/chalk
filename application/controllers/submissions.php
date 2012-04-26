@@ -49,7 +49,7 @@ class Submissions extends MY_Controller {
 	
 	public function viewAssignmentGrades(){
 	
-		$data = $this->Submissions_model->getStudentGrades();
+		$data = $this->Submissions_model->getAssignmentGrades(2);
 		foreach($data as $row){
 			echo 'Submission Date: ' . $row->submissionDate . '<br />';
 			echo 'Grade: ' . $row->grade . '<br />';

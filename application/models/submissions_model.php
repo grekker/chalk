@@ -10,7 +10,7 @@ class Submissions_model extends CI_Model{
 	}
 
 	function getStudentGrades($email){
-		$query = $this->db->where('email', $email)->get('submissions');
+		$query = $this->db->where('email', $email)->join('users', 'users.userID = submissions.userID')->get('submissions');
 		return $query->row();
 	}
 	
