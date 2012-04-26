@@ -42,6 +42,5 @@ class Submissions_model extends CI_Model{
 		$this->db->where('assignmentID',$assID)->where('userID', $userID)->delete('submissions');
 	}
 
-
 }
 ?>

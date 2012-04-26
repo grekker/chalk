@@ -77,6 +77,15 @@ class Submissions extends MY_Controller {
 	
 	}
 
+	public function submitAssignment() {
+
+		$this->load->view('submit_assignment');
+	}
+
+	public function viewAllSubmissions() {
+		$this->load->view('view_all_submissions');
+	}
+
 }
 
 /* End of file welcome.php */
