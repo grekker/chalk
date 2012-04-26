@@ -58,17 +58,36 @@ class Submissions extends MY_Controller {
 		echo 'Level: ' . $row->userLevelID . '<br /><br />';
 	}
 	
+	
+	public function viewAllSubmissions() {
+		$id = $this->uri->segment(3);
+
+		$this->load->view('view_all_submissions');
+	}
+	
 	// SETS //
 	
 	public function setGrade(){
 		$this->Submissions_model->setGrade(1, 1, '98');
 	}
 	
+	public function gradeAssignment() {
+		$id = $this->uri->segment(3);
+		$row = $this->Submissions_model->getSingleSubmission($id);
+		$this->load->view('grade_assignment', $row);
+	}
+	
 	// CREATE //
 	
-	public function create(){
+	public function createSubmission(){
 		$this->Submissions_model->createSubmission(1, 1, '2012-07-12');
 	}
+	
+	public function submitAssignment() {
+
+		$this->load->view('submit_assignment');
+	}
+
 	
 	// DELETE //
 	
@@ -77,22 +96,6 @@ class Submissions extends MY_Controller {
 	
 	}
 
-	public function submitAssignment() {
-
-		$this->load->view('submit_assignment');
-	}
-
-	public function viewAllSubmissions() {
-		$id = $this->uri->segment(3);
-
-		$this->load->view('view_all_submissions');
-	}
-
-	public function gradeAssignment() {
-		$id = $this->uri->segment(3);
-		$row = $this->Submissions_model->getSingleSubmission($id);
-		$this->load->view('grade_assignment', $row);
-	}
 	
 	function updateGrade(){
 		$submissionID = $this->uri->segment(3);

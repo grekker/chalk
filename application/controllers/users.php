@@ -25,14 +25,11 @@ class Users extends MY_Controller {
 
 	public function viewAll() {	
 	
+		if($_SESSION['userLevelID']==1){
+			redirect('users/viewSingle/'.$_SESSION['userID'], 'location');
+		}
+	
 		$data = $this->Users_model->getAllStudents();
-		//foreach($data as $row) {
-		//	echo 'First Name: ' . $row->firstName . '<br />';
-		//	echo 'Last Name: ' . $row->lastName . '<br />';
-		//	echo 'Password: ' . $row->passwd . '<br />';
-		//	echo 'Email: ' . $row->email . '<br />';
-		//	echo 'Level: ' . $row->userLevelID . '<br /><br />';
-		//}
 		
 		$send = array('entry' => $data);
 		

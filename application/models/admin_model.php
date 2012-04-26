@@ -23,8 +23,11 @@ class Admin_model extends CI_Model {
 	
 	function login($email){
 	//creates session var used for durarion of login, sends user to dashboard controller.
-		$_SESSION['username'] = $email;
-		redirect('dashboard');
+		
+		$query = $this->db->where('email', $email)->limit(1)->get('users');
+		return $query->row();
+		
+		
 	}
 	
 	function logout(){
