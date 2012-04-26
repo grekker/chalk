@@ -21,14 +21,15 @@
 
 foreach($entry as $row):?>
 <tr>
-<td><?= $row->lastName ?></td>
+<td><?= anchor('users/viewSingle/' . $row->userID, $row->lastName, 'title="View"'); ?></td>
 <td><?= $row->firstName ?></td>
 <td><?= $row->email ?></td>
-<td><?= anchor('users/edit/' . $row->userID, 'Edit', 'title="Edit"'); ?></td>
+<td><?= anchor('users/editStudent/' . $row->userID, 'Edit', 'title="Edit"'); ?></td>
 </tr>
 <?php endforeach;?>
 
 </table> 
+<p><?= anchor('users/addStudent', 'Add new student', 'title="Add new student"'); ?></p>
 </div>
 <?php $this->load->view('sidebar'); ?>
 <?php $this->load->view('footer'); ?>

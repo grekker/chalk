@@ -21,16 +21,16 @@ class Users extends MY_Controller {
 
 	public function create(){
 	
-		$this->Users_model->createStudent('Anu', 'Uzer', 'auzer@gmail.com', 'Student');
-	
+		//$this->Users_model->createStudent('Anu', 'Uzer', 'auzer@gmail.com', 'Student');
+		
 	}
 	
 	public function edit(){
 	
-		$this->Users_model->setFirstName('auzer@gmail.com', 'Anold');
-		$this->Users_model->setLastName('auzer@gmail.com', 'One');
-		$this->Users_model->setPassword('auzer@gmail.com', 'student');
-		$this->Users_model->setEmail('auzer@gmail.com', 'aone@gmail.com');
+		//$this->Users_model->setFirstName('auzer@gmail.com', 'Anold');
+		//$this->Users_model->setLastName('auzer@gmail.com', 'One');
+		//$this->Users_model->setPassword('auzer@gmail.com', 'student');
+		//$this->Users_model->setEmail('auzer@gmail.com', 'aone@gmail.com');
 
 	
 	}
@@ -70,6 +70,19 @@ class Users extends MY_Controller {
 		
 		
 		$this->load->view('view_single_student', $row);
+	}
+
+	public function addStudent() {
+
+		$this->load->view('add_student');
+	}
+
+	public function editStudent() {
+		$id = $this->uri->segment(3);
+
+		$row = $this->Users_model->getUser($id);
+
+		$this->load->view('edit_student');
 	}
 
 }

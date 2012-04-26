@@ -1,11 +1,11 @@
 <?php $this->load->view('header') ?>
 <div role="main" id="main">
 	<form>
-    <h2>Add/ Edit Student</h2>
-  <form name="input" action="html_form_action.asp" method="get">
+    <h2>AddStudent</h2>
+  <form name="input" action="" method="POST">
     <p>Student name:
-  <input type="text" name="FirstName" value="John Smith" /><br />
-      Email address: <input type="text" name="LastName" value="example@email.com" /><br /> 
+  <input type="text" name="FirstName" /><br />
+      Email address: <input type="text" name="LastName" /><br /> 
       Add Avatar:  <br />
       
   <input type="radio" name="avatar" value="avatar1" id="avatar1-radio">
