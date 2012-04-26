@@ -35,14 +35,18 @@ class Submissions extends MY_Controller {
 	public function viewAssignmentGrades(){
 	
 		$data = $this->Submissions_model->getAssignmentGrades(2);
-		foreach($data as $row){
-			echo 'Submission Date: ' . $row->submissionDate . '<br />';
-			echo 'Grade: ' . $row->grade . '<br />';
-			echo 'Comments: ' . $row->comments . '<br />';
-			echo 'Attached File: ' . $row->attachedFiles . '<br />';
-			echo 'User ID: ' . $row->userID . '<br />';
-			echo 'Assignment ID: ' . $row->assignmentID . '<br /><br />';
-		}
+	//	foreach($data as $row){
+	//		echo 'Submission Date: ' . $row->submissionDate . '<br />';
+	//		echo 'Grade: ' . $row->grade . '<br />';
+	//		echo 'Comments: ' . $row->comments . '<br />';
+	//		echo 'Attached File: ' . $row->attachedFiles . '<br />';
+	//		echo 'User ID: ' . $row->userID . '<br />';
+	//		echo 'Assignment ID: ' . $row->assignmentID . '<br /><br />';
+	//	}
+	
+		$send = array('entry' => $data);
+	
+		$this->load->view('assignment_grades', $send);
 	}
 
 	public function viewStudentGrades(){

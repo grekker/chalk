@@ -11,21 +11,16 @@
 				</tr>
 			</thead>
 			<tbody>
+				<?php 
+
+				foreach($entry as $row):?>
 				<tr>
-					<td>Phillips</td>
-					<td>Nathan</td>
-					<td>100</td>
+				<td>test</td>
+				<td><?= $row->userID ?></td>
+				<td><?= $row->userID ?></td>
+				<td><?= anchor('users/editStudent/' . $row->userID, 'Edit', 'title="Edit"'); ?></td>
 				</tr>
-				<tr>
-					<td>Dietz</td>
-					<td>Chuck</td>
-					<td>100</td>
-				</tr>
-				<tr>
-					<td>Radich</td>
-					<td>Ali</td>
-					<td>100</td>
-				</tr>
+				<?php endforeach;?>
 			</tbody>
 		</table>
 	</div>
