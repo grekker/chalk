@@ -12,33 +12,22 @@ class Submissions extends MY_Controller {
 
 	}
 
-	public function index()
-	{
+	public function index()	{
 		echo "Reached the index of Submissions.<br />";
 		echo 'loaded model<br />';
 	}
 
-	public function create(){
-		echo "This would be where you would create an assignment";
-	}
-	
-	public function edit(){
-		echo "edit Submissions here";
-	}
-
-	public function delete(){
-		echo "delete Submissions here";
-	}
 
 	public function viewAllGrades(){
 	
-<<<<<<< HEAD
+	}
+	
 	public function viewAssignmentGrades(){
 	
 		$data = $this->Submissions_model->getAssignmentGrades(2);
-=======
+
 		$data = $this->Submissions_model->getAllGrades();
->>>>>>> 46255f869e0d47a8b353624987bd4626266fd1de
+
 		foreach($data as $row){
 			echo 'Submission Date: ' . $row->submissionDate . '<br />';
 			echo 'Grade: ' . $row->grade . '<br />';
