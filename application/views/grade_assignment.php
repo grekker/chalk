@@ -1,4 +1,4 @@
-<?php include('header.php'); ?>
+<?php $this->load->view('header') ?>
 <div role="main" id="main">
 	<h2>Assigment 1</h2>
         <p>Nathan Phillips</p>
@@ -10,5 +10,5 @@
         <input type="submit" name="submit" value="submit" />
       </form>
 </div>
-<?php include('sidebar.php'); ?>
-<?php include('footer.php'); ?>
+<?php $this->load->view('sidebar') ?>
+<?php $this->load->view('footer') ?>

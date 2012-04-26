@@ -20,7 +20,7 @@
 
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>/css/style.css">
 
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
 

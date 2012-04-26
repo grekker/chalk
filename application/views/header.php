@@ -20,14 +20,14 @@
 
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>/css/style.css">
 
   <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
 
   <!-- All JavaScript at the bottom, except this Modernizr build.
        Modernizr enables HTML5 elements & feature detects for optimal performance.
        Create your own custom Modernizr build: www.modernizr.com/download/ -->
-  <script src="js/libs/modernizr-2.5.3.min.js"></script>
+  <script src="<?php echo base_url() ?>/js/libs/modernizr-2.5.3.min.js"></script>
 </head>
 <body>
   <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
@@ -38,10 +38,10 @@
       <h1 class="logo"><a href="#">Chalk</a></h1>
       <nav id="navigation">
         <ul>
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Students</a></li>
-          <li><a href="#">Assignments</a></li>
-          <li><a href="#">Grades</a></li>
+          <li><?php echo anchor('dashboard', 'Dashboard', 'title="Dashboard"'); ?></li>
+          <li><?php echo anchor('users/viewAll', 'Students', 'title="Students"'); ?></li>
+          <li><?php echo anchor('assignments', 'Assignments', 'title="Assignments"'); ?></li>
+          <li><?php echo anchor('grades', 'Grades', 'title="Grades"'); ?></li>
         </ul>
       </nav>
     </div>
