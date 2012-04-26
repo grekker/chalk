@@ -16,8 +16,8 @@
 
 				foreach($entry as $row):?>
 				<tr>
-				<td><?= $row->userID ?></td>
-				<td><?= $row->userID ?></td>
+				<td><?= $row->lastName ?></td>
+				<td><?= $row->firstName ?></td>
 				<td><?= $row->submissionDate ?></td>
 				<td><?= anchor('submissions/gradeAssignment/' . $row->userID, $row->grade, 'title="Edit"'); ?></td>
 				</tr>

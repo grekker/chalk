@@ -20,28 +20,6 @@ class Users extends MY_Controller {
 
 	
 	}
-
-	public function create(){
-	
-		//$this->Users_model->createStudent('Anu', 'Uzer', 'auzer@gmail.com', 'Student');
-		
-	}
-	
-	public function edit(){
-	
-		//$this->Users_model->setFirstName('auzer@gmail.com', 'Anold');
-		//$this->Users_model->setLastName('auzer@gmail.com', 'One');
-		//$this->Users_model->setPassword('auzer@gmail.com', 'student');
-		//$this->Users_model->setEmail('auzer@gmail.com', 'aone@gmail.com');
-
-	
-	}
-
-	public function delete(){
-	
-		//$this->Users_model->deleteUser('auzer@gmail.com');
-	
-	}
 	
 	// GET //
 
