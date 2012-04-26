@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS  `submissions`, `assignments`, `users`, `users_level`;
+DROP TABLE IF EXISTS  `users_courses`, `submissions`, `assignments`, `courses`, `users`, `users_level`;
 
 CREATE TABLE `users_level` (
  	 `userLevelID` int(10) unsigned NOT NULL auto_increment PRIMARY KEY,
