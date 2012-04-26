@@ -1,8 +1,7 @@
 <?php $this->load->view('header') ?>
 <div role="main" id="main">
-	<form>
-    <h2>Edit Student</h2>
-  <form name="input" action="" method="POST">
+    <h2>Edit Students</h2>
+  <?=form_open('users/updateStudent/'.$userID); ?>
     <label>First name: <input type="text" name="FirstName" value="<?php echo $firstName ?>" /></label>
     <label>Last Name: <input type="text" name="LastName" value="<?php echo $lastName ?>"/></label>
     <label>Email address: <input type="text" name="email" value="<?php echo $email ?>"/></label>
@@ -44,7 +43,6 @@
       <input type="submit" value="Add your new minion" />
     </p>
   </form> 
-    </form>
 </div>
 <?php $this->load->view('sidebar') ?>
 <?php $this->load->view('footer') ?>
