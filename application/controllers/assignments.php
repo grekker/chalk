@@ -67,6 +67,8 @@ class Assignments extends MY_Controller {
 		$this->load->view('edit_assignment', $row);
 	}
 	
+	
+	
 	// DELETE //
 	
 	public function delete(){

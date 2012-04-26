@@ -93,6 +93,12 @@ class Submissions extends MY_Controller {
 		$row = $this->Submissions_model->getSingleSubmission($id);
 		$this->load->view('grade_assignment', $row);
 	}
+	
+	function updateGrade(){
+		$submissionID = $this->uri->segment(3);
+		$this->Submissions_model->updateGrade($submissionID, $_POST);
+		redirect('submissions/viewAssignmentGrades/'.$submissionID, 'location');
+	}
 
 }
 

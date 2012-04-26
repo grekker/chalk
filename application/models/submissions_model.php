@@ -32,6 +32,10 @@ class Submissions_model extends CI_Model{
 		$data = Array('assignmentID'=>$assID, 'userID'=>$userID, 'grade'=>$grade);
 		$this->db->where('assignmentID',$assID)->where('userID',$userID)->update('submissions', $data);
 	}
+	
+	function updateGrade($submissionID, $data){
+		$this->db->where('submissionID',$submissionID)->update('submissions', $data);
+	}
 
 
 	// Create //
