@@ -9,6 +9,8 @@ class Users extends MY_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('Users_model');
+		$this->load->model('Assignments_model');
+		$this->load->model('Submissions_model');
 	}
 
 	public function index(){
@@ -64,14 +66,13 @@ class Users extends MY_Controller {
 	
 		$id = $this->uri->segment(3);
 	
-		$row = $this->Users_model->getUser($id);
-		//echo 'First Name: ' . $row->firstName . '<br />';
-		//echo 'Last Name: ' . $row->lastName . '<br />';
-		//echo 'Password: ' . $row->passwd . '<br />';
-		//echo 'Email: ' . $row->email . '<br />';
-		//echo 'Level: ' . $row->userLevelID . '<br /><br />';
+		$student = $this->Users_model->getUser($id);
+		$assignment = $this->Assignments_model->getAllAssignments();
+		$submissions = $this->Assignments_model->getStudentGrades($id);
 		
-		$this->load->view('view_single_student', $row);
+		$send = array('student' => $student, 'assignmentArray' => $assignment, 'submissionsArray' => $submissions);
+		
+		$this->load->view('view_single_student', $send);
 	}
 	
 	// CREATE //
