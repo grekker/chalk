@@ -26,7 +26,7 @@ class Submissions_model extends CI_Model{
 	}
 
 	function getStudentSubmissions($userID) {
-		$query = $this->db->where('userID', $userID)->join('submissions', 'submissions.assignmentID = assignments.assignmentID')->get('assignments');
+		$query = $this->db->where('userID', $userID)->join('submissions', 'submissions.assignmentID = assignments.assignmentID', 'right')->get('assignments');
 		return $query->result();
 	}
 	

@@ -18,19 +18,24 @@
 
 <p>Assignment Submissions</p>
 <table border="0" cellpadding="4">
-<tr>
-<th>Title</th>
-<th>Date Due</th>
-<th>Date Submitted</th>
-<th>Grade</th>
-</tr>
-<?php foreach($assignmentArray as $assignment):?>
-<tr>
-<td><?=$assignment->title ?></td>
-<td><?=$assignment->setDate ?></td>
-<td><?=$assignment->dueDate ?></td>
-</tr>
-<?php endforeach;?>
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Date Due</th>
+			<th>Date Submitted</th>
+			<th>Grade</th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach($ass as $a):?>
+		<tr>
+			<td><?=$a->title ?></td>
+			<td><?=$a->setDate ?></td>
+			<td><?=$a->dueDate ?></td>
+			<td><?=$a->grade ?></td>
+		</tr>
+		<?php endforeach;?>
+	</tbody>
 </table> 
 </div>
 <?php $this->load->view('sidebar'); ?>
