@@ -1,7 +1,10 @@
 <?php $this->load->view('header') ?>
 <div role="main" id="main">
 	<h2>View All Assignments</h2>
-	<p><?php echo anchor('assignments/createAssignment', 'Create Assignment', 'title="Create Assignment"'); ?></p>
+	<p><?php
+	if ($_SESSION['userLevelID']==2){
+		echo anchor('assignments/createAssignment', 'Create Assignment', 'title="Create Assignment"');
+	} ?></p>
 	<div class="table-wrapper">
 		<table class="respond">
 			<thead>
@@ -19,7 +22,7 @@
 					<td>
 					<?php 
 						if ($_SESSION['userLevelID']==1){
-							echo anchor('submissions/createSubmission/' . $row->assignmentID, 'Grade', 'title="Grade"')
+							echo anchor('submissions/submitAssignment/' . $row->assignmentID, 'Submit', 'title="Grade"');
 						}else{
 							echo anchor('submissions/viewAssignmentGrades/' . $row->assignmentID, 'Grade', 'title="Grade"'); 
 						}
