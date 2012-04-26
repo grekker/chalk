@@ -68,7 +68,7 @@ class Users extends MY_Controller {
 	
 		$student = $this->Users_model->getUser($id);
 		$assignment = $this->Assignments_model->getAllAssignments();
-		$submissions = $this->Assignments_model->getStudentGrades($id);
+		$submissions = $this->Submissions_model->getStudentGrades($id);
 		
 		$send = array('student' => $student, 'assignmentArray' => $assignment, 'submissionsArray' => $submissions);
 		
