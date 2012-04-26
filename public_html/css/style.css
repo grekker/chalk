@@ -271,7 +271,7 @@ img { max-width: 100%; }
 
 input { display: block; margin-bottom: 1.5em; width: 53.125%; height: 1.5em;}
 
-input[type="submit"], input[type="reset"] { display: block; margin: 1.5em 0; width: 15.625%}
+input[type="submit"], input[type="reset"] { display: block; margin: 1.5em 0; min-width: 15%;}
 
 input[type="radio"] { height: 1em; line-height: 1.5em;}
 
@@ -380,6 +380,11 @@ tbody th { font-weight: normal; text-align: left; }
 .table-wrapper {
    position: relative;
 }
+
+/* Avatars */
+
+.avatar-select input { margin-bottom: 0;}
+.avatar-select img { margin-bottom: 10px; }
 
 /* ==|== state =============================================================== */
 
