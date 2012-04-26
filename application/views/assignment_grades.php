@@ -7,6 +7,7 @@
 				<tr>
 					<th>Last Name</th>
 					<th>First Name</th>
+					<th>Date Submitted</th>
 					<th>Grade</th>
 				</tr>
 			</thead>
@@ -15,10 +16,10 @@
 
 				foreach($entry as $row):?>
 				<tr>
-				<td>test</td>
 				<td><?= $row->userID ?></td>
 				<td><?= $row->userID ?></td>
-				<td><?= anchor('users/editStudent/' . $row->userID, 'Edit', 'title="Edit"'); ?></td>
+				<td><?= $row->submissionDate ?></td>
+				<td><?= anchor('submissions/gradeAssignment/' . $row->userID, $row->grade, 'title="Edit"'); ?></td>
 				</tr>
 				<?php endforeach;?>
 			</tbody>

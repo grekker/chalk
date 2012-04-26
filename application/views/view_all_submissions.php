@@ -13,9 +13,9 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>Test Assignment 1</td>
-					<td>04/23/11</td>
-					<td>1/1</td>
+					<td><?php echo $send->entry->userID; ?></td>
+					<td><?php echo $entry->submissionDate; ?></td>
+					<td><?php echo $entry->grade; ?></td>
 					<td><?php echo anchor('/assignments/gradeAssignment/', 'Edit', 'title="Edit Grade"'); ?></td>
 				</tr>
 				<tr>

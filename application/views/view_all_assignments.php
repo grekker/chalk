@@ -16,7 +16,7 @@
 				<tr>
 					<td><?php echo anchor('assignments/viewAssignment/' . $row->assignmentID, $row->title, 'title="' . $row->title . '"'); ?></td>
 					<td><?php echo $row->dueDate; ?></td>
-					<td>Grade</td>
+					<td><?php echo anchor('submissions/viewAssignmentGrades/' . $row->assignmentID, 'Grade', 'title="Grade"'); ?></td>
 				</tr>
 			<?php endforeach; ?>
 			</tbody>

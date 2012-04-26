@@ -33,8 +33,8 @@ class Submissions extends MY_Controller {
 	}
 	
 	public function viewAssignmentGrades(){
-	
-		$data = $this->Submissions_model->getAssignmentGrades(2);
+		$id = $this->uri->segment(3);
+		$data = $this->Submissions_model->getAssignmentGrades($id);
 	//	foreach($data as $row){
 	//		echo 'Submission Date: ' . $row->submissionDate . '<br />';
 	//		echo 'Grade: ' . $row->grade . '<br />';
@@ -83,7 +83,15 @@ class Submissions extends MY_Controller {
 	}
 
 	public function viewAllSubmissions() {
+		$id = $this->uri->segment(3);
+
 		$this->load->view('view_all_submissions');
+	}
+
+	public function gradeAssignment() {
+		$id = $this->uri->segment(3);
+		$row = $this->Submissions_model->getSingleSubmission($id);
+		$this->load->view('grade_assignment', $row);
 	}
 
 }
