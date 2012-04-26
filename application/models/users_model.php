@@ -59,17 +59,17 @@ class Users_model extends CI_Model{
 
 	// Create //
 
-	function createUser($fname, $lname, $email, $password, $lid){
-		$data = Array('firstName'=>$fname, 'lastName'=>$lname, 'email'=>$email, 'passwd'=>$password, 'userLevelID'=>$lid);
+	function createUser($data){
+		//$data = Array('firstName'=>$fname, 'lastName'=>$lname, 'passwd'=>$password, 'email'=>$email, 'userLevelID'=>$lid);
 		$this->db->insert('users', $data);
 	}
 
-	function createStudent($fname, $lname, $email, $password){
-		$this->createUser($fname, $lname, $email, $password, STUDENT_LEVEL);	
+	function createStudent($fname, $lname, $password,  $email){
+		$this->createUser($fname, $lname, $password, $email, STUDENT_LEVEL);	
 	}
 
-	function createTeacher($fname, $lname, $email, $password){
-		$this->createUser($fname, $lname, $email, TEACHER_LEVEL);	
+	function createTeacher($fname, $lname, $password, $email){
+		$this->createUser($fname, $lname, $password, $email, TEACHER_LEVEL);	
 	}
 	
 	

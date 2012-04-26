@@ -1,11 +1,12 @@
 <?php $this->load->view('header') ?>
 <div role="main" id="main">
-	<form>
     <h2>AddStudent</h2>
-  <form name="input" action="" method="POST">
-    <p>Student name:
-  <input type="text" name="FirstName" /><br />
-      Email address: <input type="text" name="LastName" /><br /> 
+  <?=form_open('users/insertStudent/'); ?>
+    <p>First Name: <input type="text" name="firstName" /><br />
+      Last Name: <input type="text" name="lastName" /><br />
+      Email address: <input type="text" name="email" /><br />
+      Password: <input type="password" name="passwd" /><br />  
+      <input type="hidden" name="userLevelID" value="1" />   
       Add Avatar:  <br />
       
   <input type="radio" name="avatar" value="avatar1" id="avatar1-radio">
@@ -43,7 +44,6 @@
       <br /><br />
       <input type="submit" value="Add your new minion" />
     </p>
-  </form> 
     </form>
 </div>
 <?php $this->load->view('sidebar') ?>

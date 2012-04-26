@@ -62,7 +62,9 @@ class Users extends MY_Controller {
 
 	public function viewSingle(){
 	
-		$row = $this->Users_model->getUser('student@gmail.com');
+		$id = $this->uri->segment(3);
+	
+		$row = $this->Users_model->getUser($id);
 		//echo 'First Name: ' . $row->firstName . '<br />';
 		//echo 'Last Name: ' . $row->lastName . '<br />';
 		//echo 'Password: ' . $row->passwd . '<br />';
@@ -76,6 +78,11 @@ class Users extends MY_Controller {
 
 	public function addStudent() {
 		$this->load->view('add_student');
+	}
+	
+	public function insertStudent() {
+		$this->Users_model->createUser($_POST);
+		redirect('users/viewAll', 'location');
 	}
 	
 	// SET //
