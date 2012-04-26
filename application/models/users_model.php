@@ -26,35 +26,35 @@ class Users_model extends CI_Model{
 		return $query->result();
 	}
 	
-	function getStudentGrades($email = false){
-		if (!empty($email)) $this->db->where('email',$email);
+	function getStudentGrades($userID = false){
+		if (!empty($userID)) $this->db->where('userID',$userID);
 		//$query = $this->db->//RESUME HERE
 	}
 
 	// Setters //
 	
-	function setData($email, $data){
-		$this->db->where('email',$email)->update('users', $data);
+	function setData($userID, $data){
+		$this->db->where('userID',$userID)->update('users', $data);
 	}
 
-	function setFirstName($email, $fname){
+	function setFirstName($userID, $fname){
 		$data = Array('firstName'=>$fname);
-		$this->setData($email, $data);
+		$this->setData($userID, $data);
 	}
 
 	function setLastName($email, $lname){
 		$data = Array('lastName'=>$lname);
-		$this->setData($email, $data);
+		$this->setData($userID, $data);
 	}
 
 	function setEmail($email, $newemail){
 		$data = Array('email'=>$newemail);
-		$this->setData($email,$data);
+		$this->setData($userID,$data);
 	}
 
 	function setPassword($email, $pass){
 		$data = Array('passwd'=>$pass);
-		$this->setData($email,$data);
+		$this->setData($userID,$data);
 	}
 
 	// Create //
@@ -75,8 +75,8 @@ class Users_model extends CI_Model{
 	
 	// Delete //
 	
-	function deleteUser($email){
-		$this->db->where('email', $email)->delete('users');
+	function deleteUser($userID){
+		$this->db->where('userID', $userID)->delete('users');
 	}
 	
 	
