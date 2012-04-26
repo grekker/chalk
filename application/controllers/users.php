@@ -40,6 +40,8 @@ class Users extends MY_Controller {
 		//$this->Users_model->deleteUser('auzer@gmail.com');
 	
 	}
+	
+	// GET //
 
 	public function viewAll() {	
 	
@@ -67,23 +69,32 @@ class Users extends MY_Controller {
 		//echo 'Email: ' . $row->email . '<br />';
 		//echo 'Level: ' . $row->userLevelID . '<br /><br />';
 		
-		
-		
 		$this->load->view('view_single_student', $row);
 	}
+	
+	// CREATE //
 
 	public function addStudent() {
-
 		$this->load->view('add_student');
 	}
+	
+	// SET //
 
 	public function editStudent() {
 		$id = $this->uri->segment(3);
-
 		$row = $this->Users_model->getUser($id);
-
 		$this->load->view('edit_student', $row);
 	}
+	
+	public function updateStudent() {
+	
+		$userID = $this->uri->segment(3);
+		$this->Users_model->setData($userID, $_POST);
+		redirect('users/viewAll', 'location');
+	
+	}
+	
+	// DELETE //
 
 	public function deleteStudent() {
 		$id = $this->uri->segment(3);
