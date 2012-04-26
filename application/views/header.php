@@ -38,10 +38,10 @@
       <h1 class="logo"><a href="#">Chalk</a></h1>
       <nav id="navigation">
         <ul>
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Students</a></li>
-          <li><a href="#">Assignments</a></li>
-          <li><a href="#">Grades</a></li>
+          <li><?php echo anchor('dashboard', 'Dashboard', 'title="Dashboard"'); ?></li>
+          <li><?php echo anchor('users/viewAll', 'Students', 'title="Students"'); ?></li>
+          <li><?php echo anchor('assignments', 'Assignments', 'title="Assignments"'); ?></li>
+          <li><?php echo anchor('grades', 'Grades', 'title="Grades"'); ?></li>
         </ul>
       </nav>
     </div>

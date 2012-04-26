@@ -8,21 +8,23 @@
     
     
     
-    
+<thead>    
 <tr>
-<th>Student Name</th>
-<th>Email Address</th>
-<th>Grade in Class</th>
+	<th>Last Name</th>
+	<th>First Name</th>
+	<th>Email Address</th>
+	<th>Edit</th>
 </tr>
+</thead>
 
 <?php 
 
 foreach($entry as $row):?>
 <tr>
-<td><?= $row->firstName ?></td>
 <td><?= $row->lastName ?></td>
-<td><?= $row->email ?></td>
 <td><?= $row->firstName ?></td>
+<td><?= $row->email ?></td>
+<td><?= anchor('users/edit/' . $row->userID, 'Edit', 'title="Edit"'); ?></td>
 </tr>
 <?php endforeach;?>
 
