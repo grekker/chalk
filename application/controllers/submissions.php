@@ -12,26 +12,15 @@ class Submissions extends MY_Controller {
 
 	}
 
-	public function index()
-	{
+	public function index()	{
 		echo "Reached the index of Submissions.<br />";
 		echo 'loaded model<br />';
 	}
-
-	public function create(){
-		echo "This would be where you would create an assignment";
-	}
 	
-	public function edit(){
-		echo "edit Submissions here";
-	}
+	// GETS //
 
-	public function delete(){
-		echo "delete Submissions here";
-	}
 
 	public function viewAllGrades(){
-	
 		$data = $this->Submissions_model->getAllGrades();
 		foreach($data as $row){
 			echo 'Submission Date: ' . $row->submissionDate . '<br />';
@@ -42,14 +31,46 @@ class Submissions extends MY_Controller {
 			echo 'Assignment ID: ' . $row->assignmentID . '<br /><br />';
 		}
 	}
+	
+	public function viewAssignmentGrades(){
+	
+		$data = $this->Submissions_model->getAssignmentGrades(2);
+		foreach($data as $row){
+			echo 'Submission Date: ' . $row->submissionDate . '<br />';
+			echo 'Grade: ' . $row->grade . '<br />';
+			echo 'Comments: ' . $row->comments . '<br />';
+			echo 'Attached File: ' . $row->attachedFiles . '<br />';
+			echo 'User ID: ' . $row->userID . '<br />';
+			echo 'Assignment ID: ' . $row->assignmentID . '<br /><br />';
+		}
+	}
 
-	public function viewSingle(){
-		$row = $this->Submissions_model->getUser('student@gmail.com');
+	public function viewStudentGrades(){
+		$row = $this->Submissions_model->getStudentGrades('student@gmail.com');
 		echo 'First Name: ' . $row->firstName . '<br />';
 		echo 'Last Name: ' . $row->lastName . '<br />';
 		echo 'Password: ' . $row->passwd . '<br />';
 		echo 'Email: ' . $row->email . '<br />';
 		echo 'Level: ' . $row->userLevelID . '<br /><br />';
+	}
+	
+	// SETS //
+	
+	public function setGrade(){
+		$this->Submissions_model->setGrade(1, 1, '98');
+	}
+	
+	// CREATE //
+	
+	public function create(){
+		$this->Submissions_model->createSubmission(1, 1, '2012-07-12');
+	}
+	
+	// DELETE //
+	
+	public function delete(){
+		$this->Submissions_model->deleteSubmission(1, 1);
+	
 	}
 
 }
