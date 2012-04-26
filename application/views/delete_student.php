@@ -1,11 +1,9 @@
 <?php $this->load->view('header') ?>
 <div role="main" id="main">
-	<form>
     <h2>Are you sure you want to delete this student?</h2>
-  <form name="input" action="html_form_action.asp" method="get">
-<input type="submit" value="There's no going back..." />
-</form> 
-    </form>
+  	<form name="input" action="" method="POST">
+		<input type="submit" value="There's no going back..." />
+	</form> 
 </div>
 <?php $this->load->view('sidebar') ?>
 <?php $this->load->view('footer') ?>

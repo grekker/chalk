@@ -37,7 +37,7 @@ class Users extends MY_Controller {
 
 	public function delete(){
 	
-		$this->Users_model->deleteUser('auzer@gmail.com');
+		//$this->Users_model->deleteUser('auzer@gmail.com');
 	
 	}
 
@@ -82,7 +82,13 @@ class Users extends MY_Controller {
 
 		$row = $this->Users_model->getUser($id);
 
-		$this->load->view('edit_student');
+		$this->load->view('edit_student', $row);
+	}
+
+	public function deleteStudent() {
+		$id = $this->uri->segment(3);
+		$row = $this->Users_model->getUser($id);
+		$this->load->view('delete_student', $row);
 	}
 
 }
