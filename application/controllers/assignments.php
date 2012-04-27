@@ -21,14 +21,6 @@ class Assignments extends MY_Controller {
 	public function viewAllAssignments(){
 	
 		$data = $this->Assignments_model->getAllAssignments();
-		//foreach($data as $row){
-		//	echo 'title: ' . $row->title . '<br />';
-		//	echo 'setDate: ' . $row->setDate . '<br />';
-		//	echo 'dueDate: ' . $row->dueDate . '<br />';
-		//	echo 'courseId: ' . $row->courseID . '<br />';
-		//	echo 'maxPoints: ' . $row->maxPoints . '<br />';
-		//	echo 'information: ' . $row->information . '<br />';
-		//}
 		$send = array('entry' => $data);
 		$this->load->view('view_all_assignments', $send);	
 	}
@@ -49,6 +41,19 @@ class Assignments extends MY_Controller {
 		$this->Assignments_model->setInformation('1', 'The information has changed dude!!!!');
 	}
 	
+	public function editAssignment(){
+		$id = $this->uri->segment(3);
+		$row = $this->Assignments_model->getAssignment($id);
+		$this->load->view('edit_assignment', $row);
+	}
+	
+	public function updateAssignment(){
+		$assID = $this->uri->segment(3);
+		$this->Assignments_model->setData($assID, $_POST);
+		redirect('assignments/viewAllAssignments', 'location');
+	}
+	
+	
 	// CREATE //
 	
 	public function createAssignment(){
@@ -59,15 +64,6 @@ class Assignments extends MY_Controller {
 		$this->Assignments_model->createAssignment($_POST);
 		redirect('assignments/viewAllAssignments', 'location');
 	}
-
-	// EDIT //
-
-	public function editAssignment(){
-		$id = $this->uri->segment(3);
-		$row = $this->Assignments_model->getAssignment($id);
-		$this->load->view('edit_assignment', $row);
-	}
-	
 	
 	
 	// DELETE //
