@@ -77,12 +77,36 @@ class Submissions extends MY_Controller {
 	
 	// CREATE //
 	
+	//Processes the actual submission
 	public function insertSubmission(){
-		$this->Submissions_model->createSubmission(1, 1, '2012-07-12');
+		//$this->Submissions_model->createSubmission(1, 1, '2012-07-12');
+		$config = array(
+		'upload_path' => APPPATH . 'uploads/',
+		'allowed_types' => 'gif|jpg|png|doc|docx|pdf|txt|rtf',
+		'max_size' => '1000',
+		'max_width' => '3000',
+		'max_height' => '3000',
+		);
+		$this->load->library('upload', $config);
+		if (!$this->upload->do_upload()){
+			$error = array('error' => $this->upload->display_errors());
+			echo 'Shits fucked up.<br />';
+			print_r($error);			
+//$this->load->view('submit_assignment', $error);
+		}
+		else{
+			$data = array('upload_data' => $this->upload->data());
+echo 'Peachy Keen!';			
+//$this->load->view('view_all_assignments');
+		}
 	}
-	
+
+	//Loads the submission form for the user to fill out	
 	public function submitAssignment() {
-		$this->load->view('submit_assignment');
+		$submissionID = $this->uri->segment(3);
+		$this->load->model('Assignments_model');
+		$data = $this->Assignments_model->getAssignment($submissionID);
+		$this->load->view('submit_assignment', $data);
 	}
 
 	
