@@ -45,8 +45,9 @@ class Users extends MY_Controller {
 		$assignment = $this->Assignments_model->getAllAssignments();
 		$submissions = $this->Submissions_model->getStudentGrades($id);
 		$asssub = $this->Submissions_model->getStudentSubmissions($id);
+		$grade = $this->Submissions_model->calculateStudentGrade($asssub);
 		
-		$send = array('student' => $student, 'assignmentArray' => $assignment, 'submissionsArray' => $submissions, 'ass' => $asssub);
+		$send = array('student' => $student, 'assignmentArray' => $assignment, 'submissionsArray' => $submissions, 'ass' => $asssub, 'grade' => $grade);
 		
 		$this->load->view('view_single_student', $send);
 	}
