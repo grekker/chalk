@@ -41,7 +41,12 @@
           <li><?php echo anchor('dashboard', 'Dashboard', 'title="Dashboard"'); ?></li>
           <li><?php echo anchor('users/viewAll', 'Students', 'title="Students"'); ?></li>
           <li><?php echo anchor('assignments/viewAllAssignments', 'Assignments', 'title="Assignments"'); ?></li>
+          <?php if(!(isset($_SESSION['username']))) { ?>
+          <li><?php echo anchor('admin', 'Log In', 'title="Log In"'); ?></li>
+          <?php }
+          else {?>
           <li><?php echo anchor('admin/logout', 'Logout', 'title="Logout"'); ?></li>
+          <?php } ?>
         </ul>
       </nav>
     </div>
