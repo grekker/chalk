@@ -1,9 +1,11 @@
 <?php
 
+date_default_timezone_set('America/New_York');
+error_reporting(E_ALL);
+ini_set('display_errors',1);
+
 class Assignments_model extends CI_Model{
 
-//error_reporting(E_ALL);
-//ini_set('display_errors',1);
 
 	function __construct(){
 		parent::__construct();
