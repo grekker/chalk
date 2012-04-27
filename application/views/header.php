@@ -39,7 +39,15 @@
       <nav id="navigation">
         <ul>
           <li><?php echo anchor('dashboard', 'Dashboard', 'title="Dashboard"'); ?></li>
+
+          <?php if (isset($_SESSION['userLevelID']) && $_SESSION['userLevelID'] == 2) { ?> 
           <li><?php echo anchor('users/viewAll', 'Students', 'title="Students"'); ?></li>
+          <?php } ?>
+
+          <?php if (isset($_SESSION['userLevelID']) && $_SESSION['userLevelID'] == 1) { ?> 
+          <li><?php echo anchor('submissions/viewStudentGrades/' . $_SESSION['userID'], 'Grades', 'title="Grades"'); ?></li>
+          <?php } ?>
+
           <li><?php echo anchor('assignments/viewAllAssignments', 'Assignments', 'title="Assignments"'); ?></li>
           <?php if(!(isset($_SESSION['username']))) { ?>
           <li><?php echo anchor('admin', 'Log In', 'title="Log In"'); ?></li>

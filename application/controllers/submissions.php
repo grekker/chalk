@@ -43,12 +43,17 @@ class Submissions extends MY_Controller {
 	}
 
 	public function viewStudentGrades(){
-		$row = $this->Submissions_model->getStudentGrades('student@gmail.com');
-		echo 'First Name: ' . $row->firstName . '<br />';
+		$id = $this->uri->segment(3);
+		$data = $this->Submissions_model->getStudentGrades($id);
+		$asssub = $this->Submissions_model->getStudentSubmissions($id);
+		$grade = $this->Submissions_model->calculateStudentGrade($asssub);
+		$send = array('entry' => $data, 'grade' => $grade);
+		$this->load->view('view_student_grades', $send);
+		/*echo 'First Name: ' . $row->firstName . '<br />';
 		echo 'Last Name: ' . $row->lastName . '<br />';
 		echo 'Password: ' . $row->passwd . '<br />';
 		echo 'Email: ' . $row->email . '<br />';
-		echo 'Level: ' . $row->userLevelID . '<br /><br />';
+		echo 'Level: ' . $row->userLevelID . '<br /><br />';*/
 	}
 	
 	public function viewAllSubmissions() {

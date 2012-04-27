@@ -8,7 +8,10 @@ class Dashboard extends MY_Controller {
 
 	public function index()
 	{
-		$this->load->view('dashboard_view');
+		$this->load->model('Assignments_model');
+		$data = $this->Assignments_model->getAllAssignments();
+		$send = array('entry' => $data);
+		$this->load->view('dashboard_view', $send);
 	}
 }
 

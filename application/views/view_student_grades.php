@@ -3,32 +3,26 @@
 	<h2>View Student Grades</h2>
 	<div class="table-wrapper">
 		<table class="respond">
-			<tbody>
+			<thead>
 				<tr>
-					<td>Last Name</td>
-					<td>Phillips</td>
+					<th>Assignment</th>
+					<th>Date Due</th>
+					<th>Date Submitted</th>
+					<th>Grade</th>
 				</tr>
-				<tr>
-					<td>First Name</td>
-					<td>Nathan</td>
-				</tr>
-				<tr>
-					<td>Assignment 1</td>
-					<td>100</td>
-				</tr>
-				<tr>
-					<td>Assignment 2</td>
-					<td>82</td>
-				</tr>
-				<tr>
-					<td>Assignment 3</td>
-					<td>34</td>
-				</tr>
-				<tr>
-					<td>Total</td>
-					<td>234230492834</td>
-				</tr>
-			</tbody>
+			</thead>
+			<?php foreach($entry as $row):?>
+		<tr>
+			<td><?=$row->title ?></td>
+			<td><?=$row->setDate ?></td>
+			<td><?=$row->dueDate ?></td>
+			<td><?=$row->grade . " / " . $row->maxPoints ?></td>
+		</tr>
+		<?php endforeach;?>
+		<tr>
+			<td colspan="3">Cumulative Grade</td>
+			<td><?php echo $grade . "%"; ?></td>
+		</tr>
 		</table>
 	</div>
 </div>
