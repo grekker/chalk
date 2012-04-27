@@ -99,22 +99,19 @@ class Submissions extends MY_Controller {
 			$this->load->library('upload', $config);
 			$uploadedfile = '';
 			if (!$this->upload->do_upload()){
-				$error = array('error' => $this->upload->display_errors());
-				echo 'Somethin broke.<br />';
-				print_r($error);			
-				//$this->load->view('submit_assignment', $error);
+				$error = array('error' => $this->upload->display_errors(), 'title' => $this->input->post('title'), 'dueDate' => $this->input->post('dueDate'), 'assignmentID' => $this->input->post('assid'));
+				//echo 'Somethin broke.<br />';
+				//print_r($error);			
+				$this->load->view('submit_assignment', $error);
 			}
 			else{
 				$uploadedfile = array('upload_data' => $this->upload->data());
-				echo 'Peachy Keen!<br />';
-				print_r($uploadedfile);	
-				//$this->load->view('view_all_assignments');
+				//print_r($uploadedfile);
+				$this->Submissions_model->createSubmission($this->input->post('assid'), $_SESSION['userID'], $uploadedfile);
+				//print_r($this->input->post());
+				//$data = array('successfulsubmit'=>'1');
+				redirect('assignments/viewAllAssignments');
 			}
-		echo 'cool<hr/>';
-			print_r($this->input->post());
-			echo 'ok...<hr/>';
-			$this->Submissions_model->createSubmission($this->input->post('assid'), $_SESSION['userID'], $uploadedfile);
-			echo 'done';
 		}
 	}
 

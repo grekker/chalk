@@ -5,6 +5,9 @@ $this->load->helper('date');?>
 <?php print_r($title); ?>
 <div role="main" id="main">
 	<h2>Submit Assignment</h2>
+	<?php if (isset($error)): ?>
+	<?php echo '<p class="is-error">'.$error.'</p>'; ?>
+	<?php endif;?>
         <h3><?php echo $title; ?></h2>
         <p>Due: <?php echo mdate('%M %j, %Y at %g:%i %A', strtotime($dueDate)); ?></p>
 	<div class="table-wrapper">
@@ -15,6 +18,8 @@ $this->load->helper('date');?>
 	echo form_label('Attach file', 'userfile');
 	echo form_upload('userfile', set_value('userfile'));
 	echo form_hidden('assid', $assignmentID);
+	echo form_hidden('title', $title);
+	echo form_hidden('dueDate', $dueDate);
 	echo form_submit('submit', 'submit');
      	echo form_close(); ?>
 	</div>
