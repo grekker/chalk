@@ -1,5 +1,4 @@
 <?php
-//PHP keeps b****ing if we don't have this line
 date_default_timezone_set('America/New_York');
 $this->load->helper('date');?>
 <?php $this->load->view('header') ?>
@@ -15,6 +14,7 @@ $this->load->helper('date');?>
 	//By default codeigniter uses "userfile", if you change it, you have to pass in the new name
 	echo form_label('Attach file', 'userfile');
 	echo form_upload('userfile', set_value('userfile'));
+	echo form_hidden('assid', $assignmentID);
 	echo form_submit('submit', 'submit');
      	echo form_close(); ?>
 	</div>

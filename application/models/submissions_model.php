@@ -45,8 +45,8 @@ class Submissions_model extends CI_Model{
 
 	// Create //
 
-	function createSubmission($assID, $userID, $dateSubmitted){
-		$data = Array('assignmentID'=>$assID, 'userID'=>$userID, 'grade'=>NULL, 'dateSubmitted'=>$dateSubmitted);
+	function createSubmission($assID, $userID, $attachedFiles = NULL){
+		$data = Array('assignmentID'=>$assID, 'userID'=>$userID, 'grade'=>NULL, 'submissionDate'=>date(), 'attachedFiles'=>serialize($attachedFiles));
 		$this->db->insert('submissions', $data);
 	}
 	

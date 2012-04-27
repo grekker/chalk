@@ -2,6 +2,7 @@
 
 error_reporting(E_ALL);
 ini_set('display_errors',1);
+date_default_timezone_set('America/New_York');
 
 
 class Submissions extends MY_Controller {
@@ -80,24 +81,41 @@ class Submissions extends MY_Controller {
 	//Processes the actual submission
 	public function insertSubmission(){
 		//$this->Submissions_model->createSubmission(1, 1, '2012-07-12');
-		$config = array(
-		'upload_path' => APPPATH . 'uploads/',
-		'allowed_types' => 'gif|jpg|png|doc|docx|pdf|txt|rtf',
-		'max_size' => '1000',
-		'max_width' => '3000',
-		'max_height' => '3000',
-		);
-		$this->load->library('upload', $config);
-		if (!$this->upload->do_upload()){
-			$error = array('error' => $this->upload->display_errors());
-			echo 'Shits fucked up.<br />';
-			print_r($error);			
-//$this->load->view('submit_assignment', $error);
-		}
-		else{
-			$data = array('upload_data' => $this->upload->data());
-echo 'Peachy Keen!';			
-//$this->load->view('view_all_assignments');
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('description', 'Description', '');//currently no rules
+		$this->form_validation->set_rules('userfile', 'userfile', '');
+		$this->form_validation->set_rules('assid', 'assid', 'required');
+		if ($this->form_validation->run() !== FALSE){
+			//everything's valid, go for it
+			
+			//conditionally upload file
+			$myfile = $this->input->post('userfile');
+			$config = array(
+			'upload_path' => APPPATH . 'uploads/',
+			'allowed_types' => 'gif|jpg|png|doc|docx|pdf|txt|rtf',
+			'max_size' => '1000',
+			'max_width' => '3000',
+			'max_height' => '3000',
+			);
+			$this->load->library('upload', $config);
+			$uploadedfile = '';
+			if (!$this->upload->do_upload()){
+				$error = array('error' => $this->upload->display_errors());
+				echo 'Somethin broke.<br />';
+				print_r($error);			
+				//$this->load->view('submit_assignment', $error);
+			}
+			else{
+				$uploadedfile = array('upload_data' => $this->upload->data());
+				echo 'Peachy Keen!<br />';
+				print_r($uploadedfile);	
+				//$this->load->view('view_all_assignments');
+			}
+		echo 'cool<hr/>';
+			print_r($this->input->post());
+			echo 'ok...<hr/>';
+			$this->Submissions_model->createSubmission($this->input->post('assid'), $_SESSION['userID'], $uploadedfile);
+			echo 'done';
 		}
 	}
 
