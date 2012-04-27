@@ -50,7 +50,6 @@ class Submissions extends MY_Controller {
 		echo 'Level: ' . $row->userLevelID . '<br /><br />';
 	}
 	
-	
 	public function viewAllSubmissions() {
 		$id = $this->uri->segment(3);
 
