@@ -11,7 +11,7 @@
 <tr>
 <td><?php echo $student->firstName.' '.$student->lastName ?></td>
 <td><?=$student->email?></td>
-<td>89%</td>
+<td><?php echo $grade . "%"; ?></td>
 </tr>
 </table> 
 <br /> <br />

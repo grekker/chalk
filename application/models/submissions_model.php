@@ -10,7 +10,7 @@ class Submissions_model extends CI_Model{
 	}
 
 	function getStudentGrades($userID){
-		$query = $this->db->where('userID', $userID)->get('submissions');
+		$query = $this->db->where('userID', $userID)->join('assignments', 'submissions.assignmentID = assignments.assignmentID')->get('submissions');
 		return $query->row();
 	}	
 
@@ -28,6 +28,19 @@ class Submissions_model extends CI_Model{
 	function getStudentSubmissions($userID) {
 		$query = $this->db->where('userID', $userID)->join('submissions', 'submissions.assignmentID = assignments.assignmentID', 'right')->get('assignments');
 		return $query->result();
+	}
+
+	function calculateStudentGrade($grade) {
+		$max = "";
+		$user = "";
+		foreach ($grade as $g) {
+			$max += $g->maxPoints;
+			$user += $g->grade;
+		}
+		$user_grade = $user / $max;
+		$user_grade *= 100;
+		$user_grade = ceil($user_grade);
+		return $user_grade;
 	}
 	
 
